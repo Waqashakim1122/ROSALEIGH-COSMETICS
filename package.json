@@ -1,0 +1,26 @@
+{
+  "name": "rosaleigh-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node build.js",
+    "watch": "nodemon --watch components --watch pages -e html,css,js --exec \"node build.js\""
+  },
+  "description": "Aapki site ab chhote-chhote **components** mein baant di gayi hai. Har section (Header, Footer, Hero, Products, etc.) ka apna alag folder hai jisme uska **HTML + CSS** (aur agar zaroorat ho to JS) hai.",
+  "main": "build.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Waqashakim1122/ROSALEIGH-COSMETICS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Waqashakim1122/ROSALEIGH-COSMETICS/issues"
+  },
+  "homepage": "https://github.com/Waqashakim1122/ROSALEIGH-COSMETICS#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

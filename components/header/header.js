@@ -5,6 +5,16 @@
 (function () {
   'use strict';
 
+  // ==================== CART BADGE ZERO-STATE ====================
+  // A "0" badge on an empty cart looks unfinished, so hide it until there's
+  // at least one item. Re-run this if/when cart state updates dynamically.
+  document.querySelectorAll('.cart-bubble, .cart-bubble-mobile').forEach(function (badge) {
+    const count = parseInt(badge.textContent.trim(), 10);
+    if (!count || count <= 0) {
+      badge.style.display = 'none';
+    }
+  });
+
   // ==================== ACTIVE LINK HIGH-RANKING HIGHLIGHT ====================
   const currentPage = location.pathname.split('/').pop() || 'index.html';
 
@@ -32,6 +42,7 @@
   const menuToggle = document.getElementById('menu-toggle');
   const mobileDrawer = document.getElementById('mobile-drawer');
   const drawerBackdrop = document.getElementById('mobile-drawer-backdrop');
+  const drawerCloseBtn = document.getElementById('drawer-close');
 
   if (!menuToggle || !mobileDrawer || !drawerBackdrop) return;
 
@@ -78,6 +89,15 @@
   });
 
   drawerBackdrop.addEventListener('click', closeDrawer);
+
+  // NEW: explicit in-drawer close (X) button, since users expect a visible
+  // close affordance inside the panel itself, not just the backdrop/hamburger.
+  if (drawerCloseBtn) {
+    drawerCloseBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      closeDrawer();
+    });
+  }
 
   mobileDrawer.querySelectorAll('.drawer-link').forEach(function (link) {
     link.addEventListener('click', closeDrawer);
