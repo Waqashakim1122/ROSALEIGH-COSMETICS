@@ -40,69 +40,79 @@
       <span class="cart-bubble-mobile" aria-hidden="true">0</span>
     </a>
   </div>
-
-  <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop"></div>
-
-  <aside class="mobile-drawer" id="mobile-drawer" aria-hidden="true" aria-label="Mobile navigation">
-    <div class="drawer-inner">
-      <div class="drawer-search" role="search">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-          <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
-        </svg>
-        <input type="search" placeholder="Search products..." aria-label="Search products">
-      </div>
-
-      <nav class="mobile-drawer-links" aria-label="Mobile navigation">
-        <div class="drawer-accordion">
-          <button class="drawer-parent" aria-expanded="false">
-            <span>Shop</span>
-            <span class="drawer-chevron" aria-hidden="true">
-              <svg width="12" height="7" viewBox="0 0 12 7">
-                <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </button>
-          <div class="drawer-children">
-            <a href="shop.html" class="drawer-child-link">All Products</a>
-            <a href="shop.html?category=face" class="drawer-child-link">Face</a>
-            <a href="shop.html?category=body" class="drawer-child-link">Body</a>
-            <a href="shop.html?category=fragrance" class="drawer-child-link">Fragrance</a>
-          </div>
-        </div>
-
-        <div class="drawer-accordion">
-          <button class="drawer-parent" aria-expanded="false">
-            <span>Collections</span>
-            <span class="drawer-chevron" aria-hidden="true">
-              <svg width="12" height="7" viewBox="0 0 12 7">
-                <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </button>
-          <div class="drawer-children">
-            <a href="shop.html?collection=summer" class="drawer-child-link">Summer Edit</a>
-            <a href="shop.html?collection=best-sellers" class="drawer-child-link">Best Sellers</a>
-            <a href="shop.html?collection=gifts" class="drawer-child-link">Gifts</a>
-          </div>
-        </div>
-
-        <a href="about.html#ingredients" class="drawer-link">Ingredients</a>
-        <a href="about.html#science" class="drawer-link">Science</a>
-        <a href="about.html" class="drawer-link">Journal</a>
-        <a href="about.html" class="drawer-link">About</a>
-        <a href="contact.html" class="drawer-link">Account</a>
-      </nav>
-
-      <div class="drawer-footer">
-        <a href="cart.html" class="drawer-cart-link">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-            <path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.6L22 6H6"/>
-            <circle cx="9.5" cy="21" r="1.4" fill="currentColor" stroke="none"/>
-            <circle cx="18" cy="21" r="1.4" fill="currentColor" stroke="none"/>
-          </svg>
-          Cart (<span class="cart-count">0</span>)
-        </a>
-      </div>
-    </div>
-  </aside>
 </header>
+
+<!-- FIX: drawer + backdrop moved OUTSIDE #site-header.
+     #site-header uses backdrop-filter, which (like transform) creates a new
+     containing block for any position:fixed descendant. That trapped the
+     drawer inside the header's own box instead of letting it cover the full
+     viewport — which is what caused the announce bar and other content to
+     bleed through above/around the open drawer. Placing these as siblings
+     of <header> (still inside the same header.html component file, still
+     controlled by the same header.js via getElementById) fixes it, since
+     getElementById works regardless of where the element sits in the DOM. -->
+
+<div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop"></div>
+
+<aside class="mobile-drawer" id="mobile-drawer" aria-hidden="true" aria-label="Mobile navigation">
+  <div class="drawer-inner">
+    <div class="drawer-search" role="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+      </svg>
+      <input type="search" placeholder="Search products..." aria-label="Search products">
+    </div>
+
+    <nav class="mobile-drawer-links" aria-label="Mobile navigation">
+      <div class="drawer-accordion">
+        <button class="drawer-parent" aria-expanded="false">
+          <span>Shop</span>
+          <span class="drawer-chevron" aria-hidden="true">
+            <svg width="12" height="7" viewBox="0 0 12 7">
+              <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+        <div class="drawer-children">
+          <a href="shop.html" class="drawer-child-link">All Products</a>
+          <a href="shop.html?category=face" class="drawer-child-link">Face</a>
+          <a href="shop.html?category=body" class="drawer-child-link">Body</a>
+          <a href="shop.html?category=fragrance" class="drawer-child-link">Fragrance</a>
+        </div>
+      </div>
+
+      <div class="drawer-accordion">
+        <button class="drawer-parent" aria-expanded="false">
+          <span>Collections</span>
+          <span class="drawer-chevron" aria-hidden="true">
+            <svg width="12" height="7" viewBox="0 0 12 7">
+              <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+        <div class="drawer-children">
+          <a href="shop.html?collection=summer" class="drawer-child-link">Summer Edit</a>
+          <a href="shop.html?collection=best-sellers" class="drawer-child-link">Best Sellers</a>
+          <a href="shop.html?collection=gifts" class="drawer-child-link">Gifts</a>
+        </div>
+      </div>
+
+      <a href="about.html#ingredients" class="drawer-link">Ingredients</a>
+      <a href="about.html#science" class="drawer-link">Science</a>
+      <a href="about.html" class="drawer-link">Journal</a>
+      <a href="about.html" class="drawer-link">About</a>
+      <a href="contact.html" class="drawer-link">Account</a>
+    </nav>
+
+    <div class="drawer-footer">
+      <a href="cart.html" class="drawer-cart-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.6L22 6H6"/>
+          <circle cx="9.5" cy="21" r="1.4" fill="currentColor" stroke="none"/>
+          <circle cx="18" cy="21" r="1.4" fill="currentColor" stroke="none"/>
+        </svg>
+        Cart (<span class="cart-count">0</span>)
+      </a>
+    </div>
+  </div>
+</aside>
