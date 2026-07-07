@@ -523,6 +523,33 @@ body.drawer-open {
   }
 }
 
+/* NEW: small-phone refinements (under ~400px) */
+@media (max-width: 400px) {
+  .nav-wrap {
+    padding: 10px 16px;
+    min-height: 54px;
+  }
+
+  .logo-mark-img {
+    height: 40px;
+  }
+
+  .drawer-inner {
+    padding: 20px 20px 24px;
+  }
+
+  .drawer-search {
+    margin-top: 48px;
+    margin-bottom: 28px;
+  }
+
+  .drawer-link,
+  .drawer-parent {
+    font-size: 19px;
+    padding: 13px 0;
+  }
+}
+
 @media (min-width: 1025px) {
   .mobile-drawer,
   .mobile-drawer-backdrop {
