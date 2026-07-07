@@ -1,0 +1,239 @@
+/* ============================================================
+   INGREDIENT SPOTLIGHT component (shared look, used on Home + About)
+   Sits on the site's own cream/surface tone — same palette as
+   the rest of the page, not a dark drop-in panel.
+
+   Signature element: a single quiet "origin tag" chip anchored
+   to the photo, echoing the wax-seal provenance idea without
+   the drip / spin / sparkle-text treatment. Restraint is the
+   point — one accent, everything else stays disciplined.
+
+   Requires these tokens defined on :root or a parent scope —
+   already in your site's global stylesheet, listed here for
+   reference:
+     --bg:#FAF7F2; --surface:#F5EFE7; --forest:#1F352A;
+     --forest-light:#2C4A3A; --sage:#7A8B78; --gold:#B79A5A;
+     --gold-light:#D4B87A; --ink:#2E241D; --muted:#6B5F52;
+     --border:#E5DCD0;
+   ============================================================ */
+
+.ingredient-spotlight,
+.ingredient-spotlight *{
+  box-sizing:border-box;
+}
+.ingredient-spotlight svg{
+  display:block;
+  max-width:none;
+}
+.ingredient-spotlight img{
+  max-width:100%;
+  height:auto;
+}
+
+.ingredient-spotlight{
+  position:relative;
+  background:var(--bg);
+  padding-block:clamp(56px, 8vw, 96px);
+}
+
+.ingredient-wrap{
+  position:relative;
+  display:grid;
+  grid-template-columns:0.88fr 1.12fr;
+  gap:clamp(36px, 6vw, 72px);
+  align-items:center;
+}
+
+/* ---------- content ---------- */
+.ingredient-content{max-width:460px;}
+
+.ingredient-content .eyebrow{
+  display:flex;align-items:center;gap:10px;
+  margin:0;
+  color:var(--sage);
+  font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+}
+.ingredient-content .eyebrow::before{content:'';width:28px;height:1px;background:var(--gold);display:inline-block;}
+
+.ingredient-content h2{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:500;
+  font-size:clamp(38px, 4.4vw, 54px);
+  line-height:1.04;
+  letter-spacing:-.01em;
+  margin:16px 0 22px;
+  color:var(--forest);
+}
+.ingredient-content h2 em{
+  color:var(--gold);
+  font-style:italic;
+  font-weight:400;
+}
+
+.ingredient-content .desc{
+  font-size:14.5px;
+  color:var(--muted);
+  max-width:400px;
+  margin:0 0 36px;
+  line-height:1.8;
+}
+
+/* ---------- vitamin rows ----------
+   Each row reveals its function on hover/focus via a sliding
+   gold underline + gentle indent — small, quiet motion instead
+   of a static list. */
+.ingredient-list{list-style:none;margin:0 0 34px;padding:0;}
+.ingredient-list li{
+  position:relative;
+  display:flex;align-items:center;gap:18px;
+  padding:14px 4px;
+  border-bottom:1px solid var(--border);
+  transition:padding-left .35s cubic-bezier(.22,.61,.36,1);
+}
+.ingredient-list li:first-child{border-top:1px solid var(--border);}
+.ingredient-list li::after{
+  content:'';
+  position:absolute; left:0; bottom:-1px;
+  width:0; height:1px;
+  background:var(--gold);
+  transition:width .4s cubic-bezier(.22,.61,.36,1);
+}
+.ingredient-list li:hover,
+.ingredient-list li:focus-within{padding-left:10px;}
+.ingredient-list li:hover::after,
+.ingredient-list li:focus-within::after{width:100%;}
+
+.il-badge{
+  width:38px;height:38px;flex:none;
+  border-radius:50%;
+  border:1px solid var(--border);
+  color:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:15px;font-weight:600;
+  transition:background .35s ease, color .35s ease, border-color .35s ease;
+}
+.ingredient-list li:hover .il-badge,
+.ingredient-list li:focus-within .il-badge{
+  background:var(--gold);
+  border-color:var(--gold);
+  color:#fff;
+}
+.il-badge-cfa svg{width:18px;height:18px;}
+
+.il-copy{display:flex;flex-direction:column;gap:2px;}
+.il-name{
+  font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--forest);
+}
+.il-benefit{font-size:13px;color:var(--muted);}
+
+.ing-explore-link{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:13px;font-weight:600;letter-spacing:.02em;
+  color:var(--forest);text-decoration:none;
+  border-bottom:1px solid var(--border);
+  padding-bottom:3px;
+  transition:border-color .25s ease, gap .25s ease, color .25s ease;
+}
+.ing-explore-link svg{width:14px;height:14px;transition:transform .25s ease;}
+.ing-explore-link:hover{border-color:var(--gold);color:var(--gold);gap:13px;}
+.ing-explore-link:hover svg{transform:translateX(2px);}
+.ing-explore-link:focus-visible{outline:2px solid var(--gold);outline-offset:4px;}
+
+/* ---------- image ---------- */
+.ingredient-collage{position:relative;}
+
+.ingredient-img{
+  position:relative;
+  border-radius:14px;
+  overflow:hidden;
+  aspect-ratio:4/5;
+  box-shadow:0 16px 32px -22px rgba(46,36,29,.28);
+}
+.ingredient-img img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform 1s cubic-bezier(.22,.61,.36,1);
+}
+.ingredient-collage:hover .ingredient-img img{transform:scale(1.03);}
+
+/* origin tag — the single accent on the photo. A flat, legible
+   chip, not a medallion; states its claim once and stops. */
+.origin-tag{
+  position:absolute; left:16px; bottom:16px;
+  display:inline-flex; align-items:center; gap:7px;
+  background:rgba(250,247,242,.94);
+  color:var(--forest);
+  padding:8px 14px 8px 11px;
+  border-radius:100px;
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  box-shadow:0 6px 16px rgba(46,36,29,.18);
+}
+.origin-tag svg{width:14px;height:14px;flex:none;color:var(--gold);}
+
+/* editorial caption beneath the frame — small provenance detail,
+   set like a photo credit */
+.collage-caption{
+  display:flex; align-items:center; gap:8px;
+  margin:18px 0 0 4px;
+  font-size:11.5px;
+  color:var(--muted);
+  letter-spacing:.03em;
+  font-style:italic;
+}
+.collage-caption::before{content:'';width:14px;height:1px;background:var(--gold);display:inline-block;}
+
+/* ---------- responsive ---------- */
+
+/* Tablet: stack to one column, photo first so the visual leads,
+   text follows. Keep generous but slightly reduced spacing. */
+@media(max-width:1024px){
+  .ingredient-wrap{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+  .ingredient-content{max-width:100%;order:2;}
+  .ingredient-collage{order:1;}
+  .ingredient-img{aspect-ratio:16/10;}
+}
+
+/* Small tablet / large phone: tighten type scale and list rows */
+@media(max-width:768px){
+  .ingredient-content h2{margin:12px 0 16px;}
+  .ingredient-content .desc{margin-bottom:28px;}
+  .ingredient-list li{padding:12px 2px;gap:14px;}
+  .il-badge{width:34px;height:34px;font-size:14px;}
+  .il-badge-cfa svg{width:16px;height:16px;}
+  .il-name{font-size:11px;}
+  .il-benefit{font-size:12.5px;}
+}
+
+/* Phone: single-column full-bleed content, image reverts to a
+   taller crop, origin tag shrinks so it never crowds the corner */
+@media(max-width:560px){
+  .ingredient-content .desc{max-width:100%;}
+  .ingredient-img{aspect-ratio:4/5;border-radius:12px;}
+  .origin-tag{
+    font-size:10px;
+    padding:6px 11px 6px 8px;
+    gap:6px;
+    left:12px; bottom:12px;
+  }
+  .origin-tag svg{width:12px;height:12px;}
+  .collage-caption{font-size:11px;margin-top:14px;}
+}
+
+/* Very small phones: prevent the vitamin rows from feeling cramped
+   by dropping the hover indent (touch devices don't hover anyway) */
+@media(max-width:380px){
+  .ingredient-list li:hover,
+  .ingredient-list li:focus-within{padding-left:2px;}
+  .ing-explore-link{font-size:12.5px;}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .ingredient-list li,
+  .ing-explore-link,
+  .ing-explore-link svg,
+  .ingredient-img img{transition:none;}
+}

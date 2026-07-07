@@ -1,0 +1,552 @@
+/* ==========================================================================
+   CSS CUSTOM PROPERTIES & DESIGN TOKENS
+   ========================================================================== */
+:root {
+  /* Brand palette */
+  --bg: #FAF7F2;
+  --surface: #F5EFE7;
+  --forest: #1F352A;
+  --forest-light: #2C4A3A;
+  --sage: #7A8B78;
+  --gold: #B79A5A;
+  --gold-light: #D4B87A;
+  --ink: #2E241D;
+  --muted: #6B5F52;
+  --border: #E5DCD0;
+  --border-light: #EDE6DD;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ==========================================================================
+   HEADER STRUCTURAL LAYOUT
+   ========================================================================== */
+#site-header {
+  background: rgba(250, 247, 242, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: box-shadow 0.35s ease;
+  transform: translateZ(0);
+  will-change: box-shadow;
+  overflow: visible !important; /* Crucial for fixed-position drawers underneath */
+}
+
+.nav-wrap {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 14px 40px;
+  max-width: 1260px;
+  margin: 0 auto;
+  min-height: 72px;
+}
+
+/* ==========================================================================
+   DESKTOP NAVIGATION LINKS
+   ========================================================================== */
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--forest);
+  opacity: 0;
+  animation: header-rise 0.6s 0.05s ease-out forwards;
+}
+
+.nav-right {
+  justify-content: flex-end;
+}
+
+.nav-left a,
+.nav-right a {
+  color: var(--forest);
+  text-decoration: none;
+  opacity: 0.72;
+  transition: opacity 0.25s ease;
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-left a::after,
+.nav-right a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--gold);
+  transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+}
+
+.nav-left a:hover,
+.nav-right a:hover {
+  opacity: 1;
+}
+
+.nav-left a:hover::after,
+.nav-right a:hover::after {
+  width: 100%;
+}
+
+.nav-left a.active,
+.nav-right a.active {
+  opacity: 1;
+}
+
+.nav-left a.active::after,
+.nav-right a.active::after {
+  width: 100%;
+}
+
+.nav-right a.cart-chip::after {
+  display: none;
+}
+
+/* ==========================================================================
+   BRAND LOGO
+   ========================================================================== */
+.logo {
+  text-align: center;
+  opacity: 0;
+  animation: header-rise 0.65s 0s ease-out forwards;
+}
+
+.logo a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.logo-mark-img {
+  height: 68px;
+  width: auto;
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+}
+
+.logo a:hover .logo-mark-img {
+  transform: scale(1.04);
+}
+
+/* ==========================================================================
+   DESKTOP CHIP LAYOUTS
+   ========================================================================== */
+.cart-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 9px 18px;
+  border: 1.5px solid var(--border);
+  border-radius: 100px;
+  background: #FFFFFF;
+  color: var(--forest);
+  text-decoration: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cart-chip:hover {
+  border-color: var(--forest);
+  box-shadow: 0 2px 12px rgba(31, 53, 42, 0.08);
+  opacity: 1;
+}
+
+.cart-chip svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+}
+
+.cart-bubble {
+  background: var(--forest);
+  color: #FFFFFF;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   MOBILE INTERACTION ELEMENTS
+   ========================================================================== */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 99999; /* Higher than drawer to remain clickable */
+  position: relative;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--forest);
+  border-radius: 1px;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1.2), opacity 0.2s ease;
+  transform-origin: center;
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+.cart-chip-mobile {
+  display: none;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  color: var(--forest);
+  padding: 4px;
+}
+
+.cart-bubble-mobile {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: var(--forest);
+  color: #FFFFFF;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 9px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   BACKDROP & PREMIUM DRAWER COMPONENT
+   ========================================================================== */
+.mobile-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(31, 53, 42, 0.35);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 9990;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.mobile-drawer-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-drawer {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 86%;
+  max-width: 420px;
+  height: 100%;
+  height: 100dvh;
+  background: var(--bg);
+  z-index: 9995 !important; /* Escapes header flattening elements */
+  transform: translateX(-100%);
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-drawer.open {
+  transform: translateX(0) !important;
+  box-shadow: 8px 0 40px rgba(31, 53, 42, 0.1);
+}
+
+.drawer-inner {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  min-height: 100dvh;
+  padding: 28px 28px 32px;
+}
+
+/* ==========================================================================
+   INTERNAL DRAWER FIELDS
+   ========================================================================== */
+.drawer-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: #FFFFFF;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 36px;
+  margin-top: 64px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.drawer-search:focus-within {
+  border-color: var(--forest);
+  box-shadow: 0 0 0 3px rgba(31, 53, 42, 0.06);
+}
+
+.drawer-search svg {
+  flex: none;
+  color: var(--sage);
+}
+
+.drawer-search input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink);
+  outline: none;
+}
+
+.drawer-search input::placeholder {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.mobile-drawer-links {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.drawer-link {
+  display: block;
+  padding: 16px 0;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--forest);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-light);
+  transition: color 0.25s ease, padding-left 0.25s ease;
+}
+
+.drawer-link:hover,
+.drawer-link:active {
+  color: var(--gold);
+  padding-left: 6px;
+}
+
+/* ==========================================================================
+   DRAWER ACCORDIONS
+   ========================================================================== */
+.drawer-accordion {
+  border-bottom: 1px solid var(--border-light);
+}
+
+.drawer-parent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 0;
+  background: none;
+  border: none;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--forest);
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.drawer-parent:hover {
+  color: var(--gold);
+}
+
+.drawer-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--sage);
+}
+
+.drawer-parent[aria-expanded="true"] .drawer-chevron {
+  transform: rotate(180deg);
+  color: var(--gold);
+}
+
+.drawer-children {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.drawer-parent[aria-expanded="true"] + .drawer-children {
+  max-height: 280px;
+}
+
+.drawer-child-link {
+  display: block;
+  padding: 10px 0 10px 20px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.25s ease, padding-left 0.25s ease;
+}
+
+.drawer-child-link:hover,
+.drawer-child-link:active {
+  color: var(--forest);
+  padding-left: 26px;
+}
+
+.drawer-child-link:last-child {
+  padding-bottom: 16px;
+}
+
+.drawer-footer {
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.drawer-cart-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--forest);
+  text-decoration: none;
+  padding: 10px 0;
+  transition: opacity 0.25s ease;
+}
+
+.drawer-cart-link:hover {
+  opacity: 0.7;
+}
+
+/* ==========================================================================
+   GLOBAL APP WRAPPERS
+   ========================================================================== */
+body.drawer-open {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+}
+
+@keyframes header-rise {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   MEDIA QUERIES & ACCESSIBILITY
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .cart-chip-mobile {
+    display: flex;
+  }
+
+  .nav-wrap {
+    grid-template-columns: auto 1fr auto;
+    padding: 12px 20px;
+    min-height: 60px;
+  }
+
+  .nav-left,
+  .nav-right {
+    display: none;
+  }
+
+  .logo-mark-img {
+    height: 48px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .mobile-drawer,
+  .mobile-drawer-backdrop {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-left, .nav-right, .logo {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .mobile-drawer, .drawer-children, .menu-toggle span, .drawer-chevron {
+    transition: none !important;
+  }
+}
+
+.menu-toggle:focus-visible,
+.drawer-parent:focus-visible,
+.drawer-link:focus-visible,
+.drawer-child-link:focus-visible,
+.drawer-cart-link:focus-visible,
+.drawer-search input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}

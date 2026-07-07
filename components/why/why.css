@@ -1,0 +1,11 @@
+/* WHY ROSALEIGH component */
+.why{background:var(--forest);padding:80px 0;}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+.why-item{padding:0 32px;border-left:1px solid rgba(255,255,255,0.1);}
+.why-item:first-child{padding-left:0;border-left:none;}
+.why-num{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);font-size:48px;display:block;line-height:1;margin-bottom:18px;opacity:0.6;}
+.why-item h4{font-family:'Cormorant Garamond',serif;font-size:22px;color:#F0E8D6;margin-bottom:10px;font-weight:500;}
+.why-item p{font-size:13.5px;color:#9DAE96;line-height:1.6;}
+
+@media(max-width:1024px){ .why-grid{grid-template-columns:1fr 1fr;gap:40px;} }
+@media(max-width:640px){ .why-grid{grid-template-columns:1fr;} }

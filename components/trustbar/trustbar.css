@@ -1,0 +1,4 @@
+/* TRUST BAR component */
+.trustbar{background:var(--forest);padding:28px 0;}
+.trustbar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+.tb-item{display:flex;align-items:center;gap:10px;color:#D9CDB5;font-size:12.5px;font-weight:600;letter-spacing:0.04em;flex:1;min-width:160px;}

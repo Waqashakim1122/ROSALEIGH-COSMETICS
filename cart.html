@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Cart — Rosaleigh Natural Skincare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="components/announce/announce.css">
+<link rel="stylesheet" href="components/header/header.css">
+<link rel="stylesheet" href="components/page-header-cart/page-header-cart.css">
+<link rel="stylesheet" href="components/cart-items/cart-items.css">
+<link rel="stylesheet" href="components/cart-summary/cart-summary.css">
+<link rel="stylesheet" href="components/newsletter/newsletter.css">
+<link rel="stylesheet" href="components/footer/footer.css">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:title" content="Your Cart — Rosaleigh Natural Skincare">
+<meta property="og:description" content="Handcrafted natural skincare made with grass-fed tallow and pure botanical ingredients.">
+<meta property="og:type" content="website">
+<meta name="description" content="Handcrafted natural skincare made with grass-fed tallow and pure botanical ingredients.">
+</head>
+<body>
+
+<div class="announce">Free Shipping on Orders Over $75 — <span>Use Code WELCOME10 for 10% Off</span></div>
+<header id="site-header">
+  <div class="nav-wrap">
+    <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-left">
+      <a href="shop.html">Shop</a>
+      <a href="shop.html">Collections</a>
+      <a href="about.html#ingredients">Ingredients</a>
+      <a href="about.html#science">Science</a>
+    </nav>
+    <div class="logo">
+      <a href="index.html">
+        <img src="images/logo.png" alt="Rosaleigh" class="logo-mark-img">
+      </a>
+    </div>
+    <nav class="nav-right">
+      <a href="about.html">Journal</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Account</a>
+      <a href="cart.html" class="cart-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.6L22 6H6"/><circle cx="9.5" cy="21" r="1.4" fill="currentColor" stroke="none"/><circle cx="18" cy="21" r="1.4" fill="currentColor" stroke="none"/></svg>
+        Cart <span class="cart-bubble">0</span>
+      </a>
+    </nav>
+    <a href="cart.html" class="cart-chip-mobile" aria-label="View cart">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.6L22 6H6"/><circle cx="9.5" cy="21" r="1.4" fill="currentColor" stroke="none"/><circle cx="18" cy="21" r="1.4" fill="currentColor" stroke="none"/></svg>
+      <span class="cart-bubble-mobile">0</span>
+    </a>
+  </div>
+  <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop"></div>
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <nav class="mobile-drawer-links" aria-label="Mobile">
+      <a href="shop.html">Shop</a>
+      <a href="shop.html">Collections</a>
+      <a href="about.html#ingredients">Ingredients</a>
+      <a href="about.html#science">Science</a>
+      <div class="mobile-drawer-divider"></div>
+      <a href="about.html">Journal</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Account</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </div>
+</header>
+<div class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Cart</div>
+    <h1>Your Cart</h1>
+  </div>
+</div>
+
+<section class="section tight">
+  <div class="container cart-layout">
+    <div id="cart-items-wrap">
+  <div class="cart-table-head">
+    <div>Product</div><div>Price</div><div>Quantity</div><div>Total</div><div></div>
+  </div>
+
+  <div class="cart-row" data-price="36.00">
+    <div class="cart-prod">
+      <div class="cart-thumb"><img loading="lazy" decoding="async" src="images/products/heritage-tallow-balm.png"></div>
+      <div>
+        <div class="cart-pname">Heritage Tallow Balm</div>
+        <div class="cart-pvar">Format: Single — 70g</div>
+        <div class="cart-remove" onclick="removeRow(this)">Remove</div>
+      </div>
+    </div>
+    <div class="cart-price">$36.00</div>
+    <div class="cart-qty">
+      <div class="qty-box">
+        <button onclick="rowQty(this,-1)">−</button>
+        <span class="row-qty">1</span>
+        <button onclick="rowQty(this,1)">+</button>
+      </div>
+    </div>
+    <div class="cart-total row-total">$36.00</div>
+    <div></div>
+  </div>
+
+  <div class="cart-row" data-price="38.00">
+    <div class="cart-prod">
+      <div class="cart-thumb"><img loading="lazy" decoding="async" src="images/products/pdrn-calcium-multi-balm.png"></div>
+      <div>
+        <div class="cart-pname">Korean PDRN Calcium Multi Balm</div>
+        <div class="cart-pvar">Size: 10g</div>
+        <div class="cart-remove" onclick="removeRow(this)">Remove</div>
+      </div>
+    </div>
+    <div class="cart-price">$38.00</div>
+    <div class="cart-qty">
+      <div class="qty-box">
+        <button onclick="rowQty(this,-1)">−</button>
+        <span class="row-qty">1</span>
+        <button onclick="rowQty(this,1)">+</button>
+      </div>
+    </div>
+    <div class="cart-total row-total">$42.00</div>
+    <div></div>
+  </div>
+
+  <div style="margin-top:32px;">
+    <a href="shop.html"><button class="btn-ghost">← Continue Shopping</button></a>
+  </div>
+</div>
+    <div class="cart-summary">
+  <h3>Order Summary</h3>
+  <div class="summary-row"><span>Subtotal</span><span id="sum-subtotal">$78.00</span></div>
+  <div class="summary-row"><span>Shipping</span><span id="sum-shipping">Free</span></div>
+  <div class="summary-row"><span>Estimated Tax</span><span id="sum-tax">$6.24</span></div>
+  <div class="promo-row">
+    <input type="text" placeholder="Promo code">
+    <button>Apply</button>
+  </div>
+  <div class="summary-row total"><span>Total</span><span id="sum-total">$84.24</span></div>
+  <button class="btn-primary" style="width:100%;padding:16px;margin-top:8px;">Proceed to Checkout</button>
+  <div class="trust-pill" style="justify-content:center;margin-top:18px;width:100%;">✓ Secure Checkout — SSL Encrypted</div>
+</div>
+  </div>
+</section>
+
+<section class="newsletter reveal">
+  <div class="container">
+    <p class="eyebrow">Stay Connected</p>
+    <h2>Join the Rosaleigh Community</h2>
+    <p>Receive skincare education, exclusive launches and members-only offers. No spam. Unsubscribe anytime.</p>
+    <div class="nl-form">
+      <input type="email" placeholder="Enter your email address">
+      <button>Subscribe</button>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="fmark">ROSALEIGH</div>
+        <p>Natural skincare, handcrafted with grass-fed tallow and pure botanical ingredients. Made with integrity.</p>
+      </div>
+      <div>
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="shop.html">All Products</a></li>
+          <li><a href="shop.html">Best Sellers</a></li>
+          <li><a href="shop.html">Bundles</a></li>
+          <li><a href="shop.html">Gift Cards</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Learn</h5>
+        <ul>
+          <li><a href="about.html#ingredients">Ingredients</a></li>
+          <li><a href="about.html">Our Process</a></li>
+          <li><a href="about.html">Skincare Journal</a></li>
+          <li><a href="contact.html#faq">FAQs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>About</h5>
+        <ul>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="about.html">Sustainability</a></li>
+          <li><a href="index.html#testimonials">Reviews</a></li>
+          <li><a href="about.html">Press</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Support</h5>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="contact.html#faq">Shipping & Returns</a></li>
+          <li><a href="contact.html">Track Order</a></li>
+          <li><a href="contact.html">Wholesale</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 Rosaleigh Skincare. All rights reserved.</div>
+      <div class="socials">
+        <a href="#">ig</a><a href="#">tk</a><a href="#">fb</a><a href="#">✉</a>
+      </div>
+      <div>Privacy Policy · Terms of Service</div>
+    </div>
+  </div>
+</footer>
+
+<script src="components/header/header.js"></script>
+<script src="components/cart-items/cart-items.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>

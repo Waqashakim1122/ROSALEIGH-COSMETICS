@@ -1,0 +1,4 @@
+/* FAQ component */
+.faq-item{border-bottom:1px solid var(--border);padding:20px 0;}
+.faq-item h5{font-size:14.5px;color:var(--forest);margin-bottom:8px;}
+.faq-item p{font-size:13px;color:var(--muted);line-height:1.7;}

@@ -1,0 +1,13 @@
+/* TIMELINE component (About page) */
+.timeline{max-width:720px;margin:0 auto;}
+.tl-item{display:grid;grid-template-columns:110px 1fr;gap:32px;padding-bottom:44px;position:relative;}
+.tl-item::before{content:'';position:absolute;left:143px;top:30px;bottom:0;width:1px;background:var(--border);}
+.tl-item:last-child::before{display:none;}
+.tl-year{font-family:'Cormorant Garamond',serif;font-size:28px;font-style:italic;color:var(--gold);}
+.tl-content h4{font-size:20px;margin-bottom:8px;}
+.tl-content p{color:var(--muted);font-size:13.5px;line-height:1.75;}
+
+@media(max-width:640px){
+  .tl-item{grid-template-columns:1fr;}
+  .tl-item::before{display:none;}
+}

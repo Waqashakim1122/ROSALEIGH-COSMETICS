@@ -1,0 +1,10 @@
+/* SHOP PRODUCT GRID component */
+.shop-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;font-size:13px;color:var(--muted);}
+.shop-toolbar select{border:1px solid var(--border);background:#fff;padding:9px 14px;border-radius:4px;font-family:'Manrope',sans-serif;font-size:12.5px;color:var(--forest);font-weight:600;}
+.shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.pagination{display:flex;justify-content:center;gap:8px;margin-top:56px;}
+.pagination a{width:38px;height:38px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:4px;font-size:13px;font-weight:700;color:var(--forest);transition:all .2s;}
+.pagination a.active,.pagination a:hover{background:var(--forest);color:#FAF7F2;border-color:var(--forest);}
+
+@media(max-width:1024px){ .shop-grid{grid-template-columns:1fr 1fr;} }
+@media(max-width:640px){ .shop-grid{grid-template-columns:1fr;} }
