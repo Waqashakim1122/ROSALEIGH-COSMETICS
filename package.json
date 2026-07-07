@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
   "name": "rosaleigh-site",
   "version": "1.0.0",
@@ -7,7 +6,7 @@
     "build": "node build.js",
     "watch": "nodemon --watch components --watch pages -e html,css,js --exec \"node build.js\""
   },
-  "description": "Aapki site ab chhote-chhote **components** mein baant di gayi hai. Har section (Header, Footer, Hero, Products, etc.) ka apna alag folder hai jisme uska **HTML + CSS** (aur agar zaroorat ho to JS) hai.",
+  "description": "Aapki site ab chhote-chhote components mein baant di gayi hai. Har section (Header, Footer, Hero, Products, etc.) ka apna alag folder hai jisme uska HTML + CSS (aur agar zaroorat ho to JS) hai.",
   "main": "build.js",
   "repository": {
     "type": "git",
@@ -24,13 +23,4 @@
   "devDependencies": {
     "nodemon": "^3.1.14"
   }
-=======
-{
-  "name": "rosaleigh-site",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "build": "node build.js"
-  }
->>>>>>> b754580e49a767a2a5a2416517bd90e6010a4e91
 }
