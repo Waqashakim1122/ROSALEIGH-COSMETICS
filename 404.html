@@ -43,21 +43,28 @@
       <span class="cart-bubble-mobile">0</span>
     </a>
   </div>
-  <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop"></div>
-  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
-    <nav class="mobile-drawer-links" aria-label="Mobile">
-      <a href="shop.html">Shop</a>
-      <a href="shop.html">Collections</a>
-      <a href="about.html#ingredients">Ingredients</a>
-      <a href="about.html#science">Science</a>
-      <div class="mobile-drawer-divider"></div>
-      <a href="about.html">Journal</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Account</a>
-      <a href="cart.html">Cart</a>
-    </nav>
-  </div>
 </header>
+
+<!-- FIX: moved outside </header>. #site-header has backdrop-filter, which
+     (like transform) creates a new containing block for position:fixed
+     descendants -- trapping the drawer inside the header's box instead of
+     letting it cover the full viewport. header.js finds these by
+     getElementById, so moving them here doesn't break anything. -->
+
+<div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop"></div>
+<div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+  <nav class="mobile-drawer-links" aria-label="Mobile">
+    <a href="shop.html">Shop</a>
+    <a href="shop.html">Collections</a>
+    <a href="about.html#ingredients">Ingredients</a>
+    <a href="about.html#science">Science</a>
+    <div class="mobile-drawer-divider"></div>
+    <a href="about.html">Journal</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Account</a>
+    <a href="cart.html">Cart</a>
+  </nav>
+</div>
 <div class="nf-wrap">
   <div>
     <div class="nf-num">404</div>

@@ -8,3 +8,18 @@
 
 @media(max-width:1024px){ .shop-grid{grid-template-columns:1fr 1fr;} }
 @media(max-width:640px){ .shop-grid{grid-template-columns:1fr;} }
+
+/* NEW: stack toolbar and widen select on small phones */
+@media(max-width:480px){
+  .shop-toolbar{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+  .shop-toolbar select{width:100%;}
+}
+
+/* NEW: bigger tap targets for pagination on mobile */
+@media(max-width:640px){
+  .pagination a{width:44px;height:44px;}
+}

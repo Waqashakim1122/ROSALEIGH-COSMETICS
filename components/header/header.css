@@ -32,9 +32,13 @@
   top: 0;
   z-index: 100;
   transition: box-shadow 0.35s ease;
-  transform: translateZ(0);
   will-change: box-shadow;
   overflow: visible !important; /* Crucial for fixed-position drawers underneath */
+  /* FIX: removed `transform: translateZ(0)` — a transform on this ancestor
+     was creating a new containing block, which broke position:fixed on
+     .mobile-drawer / .mobile-drawer-backdrop (they were confined to the
+     header's box instead of covering the full viewport). This caused the
+     announce bar to bleed above the drawer and stray text to peek through. */
 }
 
 .nav-wrap {
@@ -520,6 +524,33 @@ body.drawer-open {
 
   .logo-mark-img {
     height: 48px;
+  }
+}
+
+/* NEW: small-phone refinements (under ~400px) */
+@media (max-width: 400px) {
+  .nav-wrap {
+    padding: 10px 16px;
+    min-height: 54px;
+  }
+
+  .logo-mark-img {
+    height: 40px;
+  }
+
+  .drawer-inner {
+    padding: 20px 20px 24px;
+  }
+
+  .drawer-search {
+    margin-top: 48px;
+    margin-bottom: 28px;
+  }
+
+  .drawer-link,
+  .drawer-parent {
+    font-size: 19px;
+    padding: 13px 0;
   }
 }
 
