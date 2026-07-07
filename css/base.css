@@ -90,6 +90,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .section.tight{padding:48px 0;}
   .sec-head{margin-bottom:40px;}
   .sec-head h2{font-size:30px;}
+<<<<<<< HEAD
+=======
+}
+
+/* NEW: extra tightening for very small phones */
+@media(max-width:400px){
+  .container{padding:0 16px;}
+  .section{padding:48px 0;}
+  .section.tight{padding:36px 0;}
+  .sec-head h2{font-size:26px;}
+>>>>>>> b754580e49a767a2a5a2416517bd90e6010a4e91
 }
 
 /* NEW: extra tightening for very small phones */

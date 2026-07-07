@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "rosaleigh-site",
   "version": "1.0.0",
@@ -23,4 +24,13 @@
   "devDependencies": {
     "nodemon": "^3.1.14"
   }
+=======
+{
+  "name": "rosaleigh-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node build.js"
+  }
+>>>>>>> b754580e49a767a2a5a2416517bd90e6010a4e91
 }

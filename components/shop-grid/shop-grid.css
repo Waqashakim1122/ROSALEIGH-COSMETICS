@@ -22,4 +22,8 @@
 /* NEW: bigger tap targets for pagination on mobile */
 @media(max-width:640px){
   .pagination a{width:44px;height:44px;}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b754580e49a767a2a5a2416517bd90e6010a4e91
