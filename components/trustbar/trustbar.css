@@ -1,4 +1,51 @@
 /* TRUST BAR component */
 .trustbar{background:var(--forest);padding:28px 0;}
-.trustbar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
-.tb-item{display:flex;align-items:center;gap:10px;color:#D9CDB5;font-size:12.5px;font-weight:600;letter-spacing:0.04em;flex:1;min-width:160px;}
+.trustbar .container{
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:20px;
+}
+.tb-item{
+  display:flex;align-items:center;gap:10px;
+  color:#D9CDB5;font-size:12.5px;font-weight:600;letter-spacing:0.04em;
+  flex:1;min-width:160px;
+}
+.tb-star{color:var(--gold);font-size:11px;flex:none;}
+
+/* ---------- TABLET: even 2-column grid instead of ragged wrap ---------- */
+@media(max-width:1024px){
+  .trustbar{padding:24px 0;}
+  .trustbar .container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px 24px;
+    text-align:left;
+  }
+  .tb-item{min-width:0;}
+  /* 5th item (odd one out) spans full width so nothing looks lopsided */
+  .tb-item:last-child{grid-column:1 / -1;justify-content:center;}
+}
+
+/* ---------- MOBILE: single centered column, divider lines ---------- */
+@media(max-width:640px){
+  .trustbar{padding:20px 0;}
+  .trustbar .container{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+  .tb-item{
+    justify-content:center;
+    text-align:center;
+    width:100%;
+    padding:12px 0;
+    border-bottom:1px solid rgba(217,205,181,0.14);
+    font-size:12px;
+  }
+  .tb-item:last-child{border-bottom:none;}
+}
+
+/* ---------- SMALL PHONES ---------- */
+@media(max-width:400px){
+  .trustbar{padding:16px 0;}
+  .tb-item{padding:10px 0;font-size:11.5px;letter-spacing:0.03em;}
+}
