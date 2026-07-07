@@ -267,9 +267,9 @@
 .mobile-drawer-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(31, 53, 42, 0.35);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: rgba(31, 53, 42, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   z-index: 9990;
   opacity: 0;
   visibility: hidden;
@@ -312,6 +312,50 @@
 }
 
 /* ==========================================================================
+   DRAWER TOP BAR (title + close button)
+   ========================================================================== */
+.drawer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.drawer-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.drawer-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: -6px;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  color: var(--forest);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.drawer-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.drawer-close:hover {
+  background: var(--surface);
+  color: var(--gold);
+}
+
+/* ==========================================================================
    INTERNAL DRAWER FIELDS
    ========================================================================== */
 .drawer-search {
@@ -322,8 +366,7 @@
   background: #FFFFFF;
   border: 1.5px solid var(--border);
   border-radius: 8px;
-  margin-bottom: 36px;
-  margin-top: 64px;
+  margin-bottom: 28px;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -357,7 +400,7 @@
 .mobile-drawer-links {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: none;
 }
 
 .drawer-link {
@@ -377,6 +420,26 @@
 .drawer-link:active {
   color: var(--gold);
   padding-left: 6px;
+}
+
+/* NEW: the last link before a .mobile-drawer-divider doesn't need its own
+   border-bottom — with the divider directly beneath it, the two lines sat
+   just a few pixels apart and read as an accidental double rule. */
+.drawer-link--no-border {
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   MOBILE DRAWER SECTION DIVIDER
+   ========================================================================== */
+/* NEW: added — this class was referenced in header.html but had no rule,
+   so it collapsed to zero height and produced no visible separation
+   between the primary and secondary link groups. */
+.mobile-drawer-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 12px 0;
+  flex: none;
 }
 
 /* ==========================================================================
@@ -454,9 +517,58 @@
   padding-bottom: 16px;
 }
 
+/* ==========================================================================
+   DRAWER PROMO FILLER
+   ========================================================================== */
+/* Sits in the flexible space between the links and the pinned footer,
+   so a short link list never leaves a large dead gap in the middle. */
+.drawer-promo {
+  flex: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 20px 0;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  color: var(--forest);
+}
+
+.drawer-promo svg {
+  flex: none;
+  margin-top: 2px;
+  color: var(--gold);
+}
+
+.drawer-promo-title {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--forest);
+  letter-spacing: 0.01em;
+}
+
+.drawer-promo-sub {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.drawer-promo-sub strong {
+  color: var(--gold);
+  font-weight: 700;
+}
+
 .drawer-footer {
-  margin-top: auto;
-  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 8px;
+  padding-top: 20px;
   border-top: 1px solid var(--border);
 }
 
@@ -477,6 +589,10 @@
 
 .drawer-cart-link:hover {
   opacity: 0.7;
+}
+
+.drawer-cart-link svg {
+  flex: none;
 }
 
 /* ==========================================================================
@@ -543,8 +659,11 @@ body.drawer-open {
   }
 
   .drawer-search {
-    margin-top: 48px;
-    margin-bottom: 28px;
+    margin-bottom: 20px;
+  }
+
+  .drawer-top {
+    margin-bottom: 18px;
   }
 
   .drawer-link,
@@ -573,6 +692,7 @@ body.drawer-open {
 }
 
 .menu-toggle:focus-visible,
+.drawer-close:focus-visible,
 .drawer-parent:focus-visible,
 .drawer-link:focus-visible,
 .drawer-child-link:focus-visible,
