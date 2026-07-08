@@ -84,3 +84,20 @@
     </div>
   </div>
 </section>
+
+<script>
+document.querySelectorAll('.section.tight .btn-add').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (btn.classList.contains('is-added')) return;
+    const label = btn.querySelector('.btn-add-label');
+    const originalText = label.textContent;
+    label.textContent = 'Added ✓';
+    btn.classList.add('is-added');
+    setTimeout(() => {
+      label.textContent = originalText;
+      btn.classList.remove('is-added');
+    }, 1800);
+  });
+});
+</script>
