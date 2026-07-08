@@ -1,7 +1,44 @@
 /* AS SEEN IN (press logos) component */
-.press{padding:50px 0;border-top:1px solid var(--border);}
-.press .eyebrow{text-align:center;margin-bottom:32px;}
-.press-logos{display:flex;justify-content:center;align-items:center;gap:50px;flex-wrap:wrap;}
-.press-logo{font-family:'Cormorant Garamond',serif;font-size:22px;color:#C0B49E;letter-spacing:0.06em;font-weight:300;font-style:italic;}
+.press{
+    padding:50px 0;
+    border-top:1px solid var(--border);
+}
 
-@media(max-width:640px){ .press-logos{gap:24px;} }
+.press .eyebrow{
+    text-align:center;
+    margin-bottom:32px;
+}
+
+.press-logos{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:50px;
+    flex-wrap:wrap;
+}
+
+.press-logo{
+    font-family:'Cormorant Garamond',serif;
+    font-size:22px;
+    color:#C0B49E;
+    letter-spacing:0.06em;
+    font-weight:300;
+    font-style:italic;
+    cursor:default;
+    transition:color .3s ease, transform .3s ease;
+}
+
+.press-logo:hover{
+    color:var(--forest);
+    transform:translateY(-2px);
+}
+
+@media(max-width:640px){
+    .press-logos{
+        gap:24px;
+    }
+
+    .press-logo{
+        font-size:18px;
+    }
+}
