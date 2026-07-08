@@ -1,13 +1,316 @@
-/* COLLECTIONS component */
-.collections{display:grid;grid-template-columns:1.4fr 1fr 1fr 0.8fr;gap:16px;height:480px;}
-.coll-card{position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;display:flex;align-items:flex-end;}
-.coll-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s;}
-.coll-card:hover img{transform:scale(1.06);}
-.coll-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(15,28,20,0.75) 100%);}
-.coll-label{position:relative;z-index:2;padding:24px;color:#fff;}
-.coll-label .cat{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;opacity:0.8;margin-bottom:4px;font-weight:600;}
-.coll-label h3{font-family:'Cormorant Garamond',serif;color:#fff;font-size:22px;font-weight:500;}
-.c1{background:#8d7142;} .c2{background:#cdd6c7;} .c3{background:#e3c9a9;} .c4{background:var(--forest);}
+/*====================================================
+    FEATURED COLLECTIONS
+    Premium Luxury UI v3
+====================================================*/
 
-@media(max-width:1024px){ .collections{grid-template-columns:1fr 1fr;height:auto;} .coll-card{height:240px;} }
-@media(max-width:640px){ .collections{grid-template-columns:1fr;} }
+.featured-collections{
+    padding:40px 0;
+    background:#F8F6F1;
+    overflow:hidden;
+}
+
+/*====================================================
+    SECTION HEADING
+====================================================*/
+
+.sec-head{
+    text-align:center;
+    max-width:720px;
+    margin:0 auto 24px;
+}
+
+.sec-head .eyebrow{
+    display:inline-block;
+    margin-bottom:10px;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:#6A7B69;
+}
+
+.sec-head h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:42px;
+    font-weight:500;
+    line-height:1;
+    color:#183629;
+    margin:0;
+}
+
+.sec-head .rule{
+    width:70px;
+    height:2px;
+    margin:18px auto 0;
+    background:#C7A35A;
+    border-radius:50px;
+}
+
+/*====================================================
+    GRID
+====================================================*/
+
+.collections{
+    display:grid;
+    grid-template-columns:1.15fr 0.92fr 0.92fr;
+    grid-template-rows:34vh 30vh;
+    gap:14px;
+}
+
+.c1{
+    grid-row:1 / span 2;
+}
+
+.c4{
+    grid-column:2 / span 2;
+}
+
+/*====================================================
+    CARD
+====================================================*/
+
+.coll-card{
+    position:relative;
+    display:block;
+    overflow:hidden;
+    border-radius:22px;
+    text-decoration:none;
+    background:#ece9e3;
+    isolation:isolate;
+    box-shadow:0 8px 28px rgba(0,0,0,.07);
+    transition:
+        transform .45s ease,
+        box-shadow .45s ease;
+}
+
+.coll-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 42px rgba(0,0,0,.15);
+}
+
+/*====================================================
+    IMAGE
+====================================================*/
+
+.coll-card img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    transition:transform .9s ease;
+}
+
+.coll-card:hover img{
+    transform:scale(1.05);
+}
+
+/*====================================================
+    OVERLAY
+====================================================*/
+
+.coll-overlay{
+    position:absolute;
+    inset:0;
+    z-index:1;
+
+    background:
+    linear-gradient(
+        to top,
+        rgba(0,0,0,.92) 0%,
+        rgba(0,0,0,.75) 12%,
+        rgba(0,0,0,.45) 25%,
+        rgba(0,0,0,.15) 40%,
+        rgba(0,0,0,0) 55%
+    );
+}
+
+/*====================================================
+    TEXT — stacked, anchored bottom-left, independent
+    of the arrow so titles never wrap or collide
+====================================================*/
+
+.coll-category{
+    position:absolute;
+    left:24px;
+    right:80px;
+    bottom:52px;
+    z-index:5;
+
+    display:block;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.92);
+    text-shadow:0 2px 6px rgba(0,0,0,.35);
+}
+
+.coll-title{
+    position:absolute;
+    left:24px;
+    right:80px;
+    bottom:20px;
+    z-index:5;
+
+    margin:0;
+    font-family:'Cormorant Garamond',serif;
+    font-size:26px;
+    line-height:1.1;
+    font-weight:500;
+    color:#fff;
+    text-shadow:
+        0 3px 12px rgba(0,0,0,.55),
+        0 10px 35px rgba(0,0,0,.35);
+}
+
+.c2 .coll-title,
+.c3 .coll-title{
+    font-size:20px;
+}
+
+/*====================================================
+    ARROW — independent, anchored bottom-right corner
+====================================================*/
+
+.coll-arrow{
+    position:absolute;
+    right:24px;
+    bottom:20px;
+    z-index:5;
+
+    font-size:20px;
+    line-height:1;
+    color:#C7A35A;
+    transition:transform .35s ease, color .35s ease;
+}
+
+.coll-card:hover .coll-arrow{
+    transform:translateX(8px);
+    color:#fff;
+}
+
+/*====================================================
+    TABLET
+====================================================*/
+
+@media (max-width:1100px){
+
+.collections{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:38vh 26vh 26vh;
+}
+
+.c1{
+    grid-column:1 / span 2;
+    grid-row:auto;
+}
+
+.c4{
+    grid-column:1 / span 2;
+}
+
+.sec-head h2{
+    font-size:38px;
+}
+
+}
+
+/*====================================================
+    MOBILE
+====================================================*/
+
+@media (max-width:768px){
+
+.featured-collections{
+    padding:36px 0;
+}
+
+.sec-head{
+    margin-bottom:24px;
+}
+
+.sec-head h2{
+    font-size:32px;
+}
+
+.collections{
+    grid-template-columns:1fr;
+    grid-template-rows:auto;
+    gap:14px;
+}
+
+.coll-card,
+.c1,
+.c2,
+.c3,
+.c4{
+    grid-column:auto;
+    grid-row:auto;
+    height:280px;
+}
+
+.coll-category,
+.coll-title{
+    left:20px;
+    right:70px;
+}
+
+.coll-category{
+    bottom:48px;
+}
+
+.coll-title{
+    bottom:18px;
+    font-size:24px;
+}
+
+.c2 .coll-title,
+.c3 .coll-title{
+    font-size:24px;
+}
+
+.coll-arrow{
+    right:20px;
+    bottom:18px;
+}
+
+}
+
+/*====================================================
+    SMALL MOBILE
+====================================================*/
+
+@media (max-width:480px){
+
+.featured-collections{
+    padding:28px 0;
+}
+
+.sec-head h2{
+    font-size:28px;
+}
+
+.sec-head .rule{
+    width:60px;
+}
+
+.coll-card{
+    height:250px;
+    border-radius:18px;
+}
+
+.coll-category{
+    font-size:11px;
+}
+
+.coll-title{
+    font-size:22px;
+}
+
+.coll-arrow{
+    font-size:16px;
+}
+
+}
