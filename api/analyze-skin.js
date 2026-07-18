@@ -1,13 +1,16 @@
 const Anthropic = require('@anthropic-ai/sdk');
 
 // ---------------------------------------------------------------------------
-// MOCK MODE — for free testing without any Anthropic credit.
-// Set the Vercel env var MOCK_SKIN_ANALYSIS to "true" to skip the real API
-// call entirely and return a realistic fake result instead. No cost, no
-// credit needed. Set it back to "false" (or delete it) once you're ready to
-// use the real AI and have credit on the account.
+// MOCK MODE — on by default.
+// This returns a realistic fake result instead of calling the real Anthropic
+// API. No cost, no credit needed, works immediately with zero configuration.
+//
+// To switch to the REAL AI once you have credit on your Anthropic account,
+// set the Vercel env var MOCK_SKIN_ANALYSIS to exactly: false
+// (then redeploy). Until you do that, this always runs in mock mode —
+// even if the env var is missing, blank, or mistyped.
 // ---------------------------------------------------------------------------
-const MOCK_MODE = process.env.MOCK_SKIN_ANALYSIS === 'true';
+const MOCK_MODE = process.env.MOCK_SKIN_ANALYSIS !== 'false';
 
 function mockAnalyze() {
   const levels = ['low', 'medium', 'high'];
@@ -69,14 +72,15 @@ module.exports = async (req, res) => {
       return res.json({ status: 'retry', message: 'Please upload a JPG, PNG, or WEBP photo.' });
     }
 
-    // ---------- MOCK PATH: no API call, no cost ----------
+    // ---------- MOCK PATH: no API call, no cost — this is the default ----------
     if (MOCK_MODE) {
+      console.log('MOCK_MODE active — skipping real API call.');
       await new Promise((r) => setTimeout(r, 900)); // simulate processing time
       const result = mockAnalyze();
       return res.json({ status: 'ok', skin: result.skin });
     }
 
-    // ---------- REAL PATH: calls the Anthropic API ----------
+    // ---------- REAL PATH: only runs if MOCK_SKIN_ANALYSIS is exactly "false" ----------
     if (!process.env.ANTHROPIC_API_KEY) {
       console.error('ANTHROPIC_API_KEY is not set in this environment.');
       return res.status(500).json({
