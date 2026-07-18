@@ -131,18 +131,159 @@
     }
   }
 
+  // ---------- Reusable photo widget: camera (front/back) + gallery + preview ----------
+  function PhotoWidget(root, onChange) {
+    const choiceEl = root.querySelector('[data-photo-choice]');
+    const cameraViewEl = root.querySelector('[data-camera-view]');
+    const videoEl = root.querySelector('[data-camera-video]');
+    const canvasEl = root.querySelector('[data-camera-canvas]');
+    const statusEl = root.querySelector('[data-camera-status]');
+    const fileInput = root.querySelector('[data-file-input]');
+    const previewEl = root.querySelector('[data-photo-preview]');
+    const previewImg = root.querySelector('[data-preview-img]');
+    const previewName = root.querySelector('[data-preview-filename]');
+
+    let stream = null;
+    let facingMode = 'user';
+    let currentFile = null;
+    let objectUrl = null;
+
+    function show(el, on) { el.hidden = !on; }
+
+    function reset() {
+      stopCamera();
+      currentFile = null;
+      if (objectUrl) { URL.revokeObjectURL(objectUrl); objectUrl = null; }
+      fileInput.value = '';
+      show(choiceEl, true);
+      show(cameraViewEl, false);
+      show(previewEl, false);
+      onChange(null);
+    }
+
+    function setFile(file) {
+      currentFile = file;
+      if (objectUrl) URL.revokeObjectURL(objectUrl);
+      objectUrl = URL.createObjectURL(file);
+      previewImg.src = objectUrl;
+      previewName.textContent = file.name || 'Photo captured';
+      show(choiceEl, false);
+      show(cameraViewEl, false);
+      show(previewEl, true);
+      onChange(file);
+    }
+
+    async function startCamera() {
+      statusEl.textContent = '';
+      try {
+        stopCamera();
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode },
+          audio: false
+        });
+        videoEl.srcObject = stream;
+        videoEl.style.transform = facingMode === 'user' ? 'scaleX(-1)' : 'none';
+        show(choiceEl, false);
+        show(previewEl, false);
+        show(cameraViewEl, true);
+      } catch (err) {
+        statusEl.textContent = '';
+        show(cameraViewEl, false);
+        show(choiceEl, true);
+        let msg = "Couldn't access your camera. You can upload from your gallery instead.";
+        if (err && err.name === 'NotAllowedError') {
+          msg = "Camera access was blocked. Allow camera permission in your browser, or upload from your gallery instead.";
+        } else if (err && err.name === 'NotFoundError') {
+          msg = "No camera was found on this device. Please upload from your gallery instead.";
+        }
+        let hint = root.querySelector('.st-camera-hint');
+        if (!hint) {
+          hint = document.createElement('p');
+          hint.className = 'st-msg retry st-camera-hint';
+          root.insertBefore(hint, choiceEl.nextSibling);
+        }
+        hint.textContent = msg;
+      }
+    }
+
+    function stopCamera() {
+      if (stream) {
+        stream.getTracks().forEach(t => t.stop());
+        stream = null;
+      }
+    }
+
+    function capture() {
+      if (!stream) return;
+      const w = videoEl.videoWidth || 720;
+      const h = videoEl.videoHeight || 720;
+      canvasEl.width = w;
+      canvasEl.height = h;
+      const ctx = canvasEl.getContext('2d');
+      if (facingMode === 'user') {
+        ctx.translate(w, 0);
+        ctx.scale(-1, 1);
+      }
+      ctx.drawImage(videoEl, 0, 0, w, h);
+      canvasEl.toBlob((blob) => {
+        if (!blob) return;
+        const file = new File([blob], `selfie-${Date.now()}.jpg`, { type: 'image/jpeg' });
+        stopCamera();
+        setFile(file);
+      }, 'image/jpeg', 0.92);
+    }
+
+    choiceEl.querySelector('[data-action="camera"]').addEventListener('click', () => {
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        fileInput.setAttribute('capture', 'user');
+        fileInput.click();
+        return;
+      }
+      facingMode = 'user';
+      startCamera();
+    });
+
+    choiceEl.querySelector('[data-action="gallery"]').addEventListener('click', () => {
+      fileInput.removeAttribute('capture');
+      fileInput.click();
+    });
+
+    root.querySelector('[data-action="switch"]').addEventListener('click', () => {
+      facingMode = facingMode === 'user' ? 'environment' : 'user';
+      startCamera();
+    });
+
+    root.querySelector('[data-action="shutter"]').addEventListener('click', capture);
+
+    root.querySelector('[data-action="cancel-camera"]').addEventListener('click', () => {
+      stopCamera();
+      show(cameraViewEl, false);
+      show(choiceEl, true);
+    });
+
+    root.querySelector('[data-action="retake"]').addEventListener('click', reset);
+
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files[0];
+      if (file) setFile(file);
+    });
+
+    return { getFile: () => currentFile, reset };
+  }
+
   // ---------- Step 1b: direct photo path ----------
-  const photoInputDirect = document.getElementById('stPhotoInputDirect');
   const analyzeBtnDirect = document.getElementById('stAnalyzeBtnDirect');
   const messagesDirect = document.getElementById('stMessagesDirect');
-
-  photoInputDirect.addEventListener('change', () => {
-    analyzeBtnDirect.style.display = photoInputDirect.files.length ? 'block' : 'none';
-    messagesDirect.innerHTML = '';
-  });
+  const widgetDirect = PhotoWidget(
+    document.querySelector('[data-photo-widget="direct"]'),
+    (file) => {
+      analyzeBtnDirect.style.display = file ? 'block' : 'none';
+      messagesDirect.innerHTML = '';
+    }
+  );
 
   analyzeBtnDirect.addEventListener('click', async () => {
-    const file = photoInputDirect.files[0];
+    const file = widgetDirect.getFile();
     if (!file) return;
     analyzeBtnDirect.disabled = true;
     analyzeBtnDirect.textContent = 'Analyzing…';
@@ -159,18 +300,19 @@
   });
 
   // ---------- Result screen: optional photo refine (after quiz) ----------
-  const photoInput = document.getElementById('stPhotoInput');
   const analyzeBtn = document.getElementById('stAnalyzeBtn');
   const messages = document.getElementById('stMessages');
   const photoArea = document.getElementById('stPhotoArea');
-
-  photoInput.addEventListener('change', () => {
-    analyzeBtn.style.display = photoInput.files.length ? 'block' : 'none';
-    messages.innerHTML = '';
-  });
+  const widgetRefine = PhotoWidget(
+    document.querySelector('[data-photo-widget="refine"]'),
+    (file) => {
+      analyzeBtn.style.display = file ? 'block' : 'none';
+      messages.innerHTML = '';
+    }
+  );
 
   analyzeBtn.addEventListener('click', async () => {
-    const file = photoInput.files[0];
+    const file = widgetRefine.getFile();
     if (!file) return;
     analyzeBtn.disabled = true;
     analyzeBtn.textContent = 'Analyzing…';
@@ -184,5 +326,12 @@
 
     analyzeBtn.disabled = false;
     analyzeBtn.textContent = 'Analyze my photo';
+  });
+
+  // Reset widgets whenever the user starts over
+  document.getElementById('stStartOver').addEventListener('click', () => {
+    widgetDirect.reset();
+    widgetRefine.reset();
+    photoArea.style.display = '';
   });
 })();
