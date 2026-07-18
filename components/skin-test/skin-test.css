@@ -63,6 +63,59 @@
 .st-consent{font-size:11.5px;color:var(--muted);margin:12px 0 18px;line-height:1.6;}
 .st-analyze-btn{width:100%;text-align:center;margin-bottom:8px;}
 
+/* Photo widget — camera / gallery choice */
+.st-photo-widget{margin:8px 0;}
+.st-photo-choice{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.st-photo-opt{
+  display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;
+  border:1.5px dashed var(--border);border-radius:8px;padding:28px 14px;
+  cursor:pointer;font-size:13px;color:var(--muted);background:#fff;
+  transition:border-color .2s,background .2s,transform .2s;
+}
+.st-photo-opt svg{color:var(--forest);}
+.st-photo-opt:hover{border-color:var(--gold);background:var(--surface);transform:translateY(-2px);}
+.st-photo-opt span{font-family:'Manrope',sans-serif;font-weight:600;color:var(--forest);}
+@media(max-width:480px){ .st-photo-choice{grid-template-columns:1fr;} }
+
+/* Live camera view */
+.st-camera-view{
+  position:relative;border-radius:10px;overflow:hidden;background:#111;
+  aspect-ratio:4/3;max-height:420px;display:flex;align-items:center;justify-content:center;
+}
+.st-camera-view video{width:100%;height:100%;object-fit:cover;transform:scaleX(-1);}
+.st-camera-status{
+  position:absolute;top:10px;left:0;right:0;text-align:center;color:#fff;
+  font-size:12px;letter-spacing:.03em;text-shadow:0 1px 3px rgba(0,0,0,.6);margin:0;
+}
+.st-camera-controls{
+  position:absolute;bottom:16px;left:0;right:0;display:flex;align-items:center;
+  justify-content:center;gap:28px;
+}
+.st-cam-btn{border:none;background:none;color:#fff;display:flex;align-items:center;justify-content:center;}
+.st-cam-btn-icon{
+  width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.4);
+  transition:background .2s;
+}
+.st-cam-btn-icon:hover{background:rgba(0,0,0,.6);}
+.st-cam-shutter{
+  width:62px;height:62px;border-radius:50%;background:#fff;border:3px solid rgba(255,255,255,.5);
+  transition:transform .15s;
+}
+.st-cam-shutter:active{transform:scale(0.9);}
+
+/* Photo preview after capture/upload */
+.st-photo-preview{
+  display:flex;align-items:center;gap:14px;border:1px solid var(--border);
+  border-radius:8px;padding:12px 14px;background:var(--surface);
+}
+.st-photo-preview img{
+  width:64px;height:64px;object-fit:cover;border-radius:6px;flex-shrink:0;
+  border:1px solid var(--border);
+}
+.st-preview-meta{display:flex;flex-direction:column;gap:4px;overflow:hidden;}
+.st-preview-meta span{font-size:12.5px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px;}
+.st-preview-change{margin:0;text-align:left;width:auto;font-size:12px;}
+
 /* Link-style buttons ("prefer a photo instead?" / "start over") */
 .st-link-btn{
   display:block;margin:22px auto 0;background:none;border:none;color:var(--sage);
