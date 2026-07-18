@@ -1,5 +1,25 @@
 const Anthropic = require('@anthropic-ai/sdk');
 
+// ---------------------------------------------------------------------------
+// MOCK MODE — for free testing without any Anthropic credit.
+// Set the Vercel env var MOCK_SKIN_ANALYSIS to "true" to skip the real API
+// call entirely and return a realistic fake result instead. No cost, no
+// credit needed. Set it back to "false" (or delete it) once you're ready to
+// use the real AI and have credit on the account.
+// ---------------------------------------------------------------------------
+const MOCK_MODE = process.env.MOCK_SKIN_ANALYSIS === 'true';
+
+function mockAnalyze() {
+  const levels = ['low', 'medium', 'high'];
+  const pick = () => levels[Math.floor(Math.random() * levels.length)];
+  return {
+    valid_face_detected: true,
+    age_bracket: '18_plus',
+    skin: { dryness: pick(), redness: pick(), oiliness: pick() },
+    confidence: 'high'
+  };
+}
+
 // This prompt controls both accuracy and safety. Edit wording freely,
 // but keep the JSON shape in sync with the parsing logic below.
 const ANALYSIS_PROMPT = `You are analyzing a selfie photo for a skincare brand's skin test tool.
@@ -39,20 +59,6 @@ module.exports = async (req, res) => {
     return res.status(405).json({ status: 'error', message: 'Method not allowed.' });
   }
 
-  // IMPORTANT: the Anthropic client is created INSIDE the handler, not at the
-  // top of the file. Creating it at module load time crashes the whole
-  // serverless function immediately if ANTHROPIC_API_KEY isn't set yet,
-  // before this code even gets a chance to return a friendly error.
-  if (!process.env.ANTHROPIC_API_KEY) {
-    console.error('ANTHROPIC_API_KEY is not set in this environment.');
-    return res.status(500).json({
-      status: 'error',
-      message: 'Photo analysis is not configured yet. Please try the quiz instead.'
-    });
-  }
-
-  const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-
   try {
     const { imageData, mediaType } = req.body || {};
 
@@ -62,6 +68,24 @@ module.exports = async (req, res) => {
     if (!['image/jpeg', 'image/png', 'image/webp'].includes(mediaType)) {
       return res.json({ status: 'retry', message: 'Please upload a JPG, PNG, or WEBP photo.' });
     }
+
+    // ---------- MOCK PATH: no API call, no cost ----------
+    if (MOCK_MODE) {
+      await new Promise((r) => setTimeout(r, 900)); // simulate processing time
+      const result = mockAnalyze();
+      return res.json({ status: 'ok', skin: result.skin });
+    }
+
+    // ---------- REAL PATH: calls the Anthropic API ----------
+    if (!process.env.ANTHROPIC_API_KEY) {
+      console.error('ANTHROPIC_API_KEY is not set in this environment.');
+      return res.status(500).json({
+        status: 'error',
+        message: 'Photo analysis is not configured yet. Please try the quiz instead.'
+      });
+    }
+
+    const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
     const response = await anthropic.messages.create({
       model: 'claude-haiku-4-5-20251001', // cheapest current model, well suited to this task
