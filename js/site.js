@@ -9,7 +9,7 @@
 // component. Valid values match the [data-theme="..."] blocks in base.css.
 (function(){
   const STORAGE_KEY = 'rosaleigh-theme';
-  const VALID_THEMES = ['default', 'rosegold', 'lavender', 'midnight'];
+  const VALID_THEMES = ['default', 'rosegold', 'lavender', 'terracotta'];
 
   function applyTheme(theme){
     if(theme && theme !== 'default'){
