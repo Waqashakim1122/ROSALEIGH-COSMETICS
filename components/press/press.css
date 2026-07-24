@@ -20,7 +20,7 @@
 .press-logo{
     font-family:'Cormorant Garamond',serif;
     font-size:22px;
-    color:#C0B49E;
+    color:var(--muted);
     letter-spacing:0.06em;
     font-weight:300;
     font-style:italic;
