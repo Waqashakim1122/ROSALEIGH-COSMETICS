@@ -3,6 +3,78 @@
    Component-specific JS uske apne components/<name>/ folder mein hai.
    ========================================================= */
 
+// ==================== COLOR THEME SWITCHER ====================
+// Works site-wide because it lives in site.js (loaded on every page) and
+// targets the theme-switcher markup that ships inside the shared header
+// component. Valid values match the [data-theme="..."] blocks in base.css.
+(function(){
+  const STORAGE_KEY = 'rosaleigh-theme';
+  const VALID_THEMES = ['default', 'rosegold', 'lavender', 'midnight'];
+
+  function applyTheme(theme){
+    if(theme && theme !== 'default'){
+      document.documentElement.setAttribute('data-theme', theme);
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+    document.querySelectorAll('.theme-swatch').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-set-theme') === (theme || 'default'));
+    });
+  }
+
+  // Apply saved theme immediately (before other setup) to avoid a flash
+  // of the default palette on load.
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if(saved && VALID_THEMES.includes(saved)){
+    applyTheme(saved);
+  } else {
+    applyTheme('default');
+  }
+
+  document.addEventListener('click', function(e){
+    const swatch = e.target.closest('.theme-swatch');
+    if(swatch){
+      const theme = swatch.getAttribute('data-set-theme');
+      applyTheme(theme);
+      try { localStorage.setItem(STORAGE_KEY, theme); } catch(err){ /* storage unavailable, theme still applies for this session */ }
+      const panel = document.getElementById('theme-panel');
+      const toggleBtn = document.getElementById('theme-toggle-btn');
+      if(panel && panel.classList.contains('open')){
+        panel.classList.remove('open');
+        panel.setAttribute('aria-hidden', 'true');
+        if(toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+      }
+      return;
+    }
+
+    const toggleBtn = document.getElementById('theme-toggle-btn');
+    const panel = document.getElementById('theme-panel');
+    if(!panel || !toggleBtn) return;
+
+    if(toggleBtn.contains(e.target)){
+      const isOpen = panel.classList.toggle('open');
+      panel.setAttribute('aria-hidden', String(!isOpen));
+      toggleBtn.setAttribute('aria-expanded', String(isOpen));
+    } else if(!panel.contains(e.target)){
+      panel.classList.remove('open');
+      panel.setAttribute('aria-hidden', 'true');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      const panel = document.getElementById('theme-panel');
+      const toggleBtn = document.getElementById('theme-toggle-btn');
+      if(panel && panel.classList.contains('open')){
+        panel.classList.remove('open');
+        panel.setAttribute('aria-hidden', 'true');
+        if(toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+      }
+    }
+  });
+})();
+
 // Scroll progress bar (top of page)
 (function(){
   const bar = document.createElement('div');
