@@ -19,6 +19,25 @@
       <a href="about.html">Journal</a>
       <a href="about.html">About</a>
       <a href="contact.html">Account</a>
+      <div class="theme-switcher">
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Change color theme" aria-expanded="false" aria-controls="theme-panel">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="13.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="8" cy="4.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="6.5" cy="10.5" r="1.2" fill="currentColor" stroke="none"/><path d="M12 2a10 10 0 1 0 10 10c0-1.1-.9-2-2-2h-2a2.5 2.5 0 0 1 0-5c1.1 0 2-.9 2-2 0-1.65-3.58-3-8-3z"/></svg>
+        </button>
+        <div class="theme-panel" id="theme-panel" role="menu" aria-hidden="true">
+          <button class="theme-swatch" data-set-theme="default" role="menuitem" aria-label="Classic Forest & Gold theme">
+            <span class="swatch-dot" style="background:#1F352A"></span>Classic
+          </button>
+          <button class="theme-swatch" data-set-theme="rosegold" role="menuitem" aria-label="Rose Gold theme">
+            <span class="swatch-dot" style="background:#B76E79"></span>Rose Gold
+          </button>
+          <button class="theme-swatch" data-set-theme="lavender" role="menuitem" aria-label="Lavender Bloom theme">
+            <span class="swatch-dot" style="background:#8E6FBB"></span>Lavender
+          </button>
+          <button class="theme-swatch" data-set-theme="midnight" role="menuitem" aria-label="Midnight theme">
+            <span class="swatch-dot" style="background:#E89FB4"></span>Midnight
+          </button>
+        </div>
+      </div>
       <a href="cart.html" class="cart-chip">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.6L22 6H6"/><circle cx="9.5" cy="21" r="1.4" fill="currentColor" stroke="none"/><circle cx="18" cy="21" r="1.4" fill="currentColor" stroke="none"/></svg>
         Cart <span class="cart-bubble">0</span>
@@ -68,6 +87,24 @@
       <div>
         <p class="drawer-promo-title">Free shipping over $75</p>
         <p class="drawer-promo-sub">Use code <strong>WELCOME10</strong> for 10% off</p>
+      </div>
+    </div>
+
+    <div class="drawer-theme-switcher">
+      <span class="drawer-theme-label">Color theme</span>
+      <div class="drawer-theme-row">
+        <button class="theme-swatch theme-swatch--drawer" data-set-theme="default" aria-label="Classic Forest & Gold theme">
+          <span class="swatch-dot" style="background:#1F352A"></span>
+        </button>
+        <button class="theme-swatch theme-swatch--drawer" data-set-theme="rosegold" aria-label="Rose Gold theme">
+          <span class="swatch-dot" style="background:#B76E79"></span>
+        </button>
+        <button class="theme-swatch theme-swatch--drawer" data-set-theme="lavender" aria-label="Lavender Bloom theme">
+          <span class="swatch-dot" style="background:#8E6FBB"></span>
+        </button>
+        <button class="theme-swatch theme-swatch--drawer" data-set-theme="midnight" aria-label="Midnight theme">
+          <span class="swatch-dot" style="background:#E89FB4"></span>
+        </button>
       </div>
     </div>
 
