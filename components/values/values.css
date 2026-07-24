@@ -1,6 +1,6 @@
 /* OUR VALUES component (About page) */
 .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-.value-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:36px 28px;text-align:center;}
+.value-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:36px 28px;text-align:center;}
 .value-icon{font-size:32px;margin-bottom:18px;color:var(--gold);}
 .value-card h4{font-size:20px;margin-bottom:10px;}
 .value-card p{color:var(--muted);font-size:13.5px;line-height:1.7;}
