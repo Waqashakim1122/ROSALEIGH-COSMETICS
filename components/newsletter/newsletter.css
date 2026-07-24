@@ -2,10 +2,10 @@
 .newsletter{background:var(--forest);padding:90px 0;text-align:center;position:relative;overflow:hidden;}
 .newsletter .eyebrow{color:var(--gold-light);position:relative;}
 .newsletter h2{color:#fff;font-size:40px;margin:10px 0 16px;position:relative;}
-.newsletter p{color:#B8C4B0;max-width:440px;margin:0 auto 32px;font-size:14.5px;position:relative;}
+.newsletter p{color:var(--gold-light);max-width:440px;margin:0 auto 32px;font-size:14.5px;position:relative;}
 .nl-form{display:flex;max-width:440px;margin:0 auto;gap:10px;position:relative;}
 .nl-form input{flex:1;padding:15px 18px;border:1.5px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.07);color:#fff;border-radius:4px;font-size:13px;font-family:'Manrope',sans-serif;outline:none;transition:border-color .2s;}
-.nl-form input::placeholder{color:#8A9E85;}
+.nl-form input::placeholder{color:var(--gold-light);}
 .nl-form input:focus{border-color:var(--gold);}
 .nl-form button{background:var(--gold);color:var(--forest);padding:15px 28px;border-radius:4px;font-weight:700;font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap;transition:background .2s;}
 .nl-form button:hover{background:var(--gold-light);}
