@@ -8,8 +8,8 @@
 .pd-options{margin-bottom:28px;}
 .pd-options h5{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--forest);margin-bottom:12px;font-weight:700;}
 .size-row{display:flex;gap:10px;}
-.size-pill{border:1.5px solid var(--border);padding:10px 20px;border-radius:100px;font-size:12.5px;font-weight:700;color:var(--forest);cursor:pointer;transition:all .2s;background:#fff;}
-.size-pill.active,.size-pill:hover{border-color:var(--forest);background:var(--forest);color:#FAF7F2;}
+.size-pill{border:1.5px solid var(--border);padding:10px 20px;border-radius:100px;font-size:12.5px;font-weight:700;color:var(--forest);cursor:pointer;transition:all .2s;background:var(--card-bg);}
+.size-pill.active,.size-pill:hover{border-color:var(--forest);background:var(--forest);color:var(--bg);}
 .qty-row{display:flex;align-items:center;gap:18px;margin-bottom:24px;}
 .pd-buy-row{display:flex;gap:12px;margin-bottom:28px;}
 .pd-buy-row .btn-primary{flex:1;padding:17px 24px;}
