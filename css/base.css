@@ -20,24 +20,32 @@
    Every value below maps 1:1 to the default palette above,
    so every component that already uses var(--forest) etc.
    re-colors automatically with no extra work.
+
+   NOTE: all themes are intentionally light-background. The product
+   photography (hero, ingredient shots, founder portrait) is shot on
+   warm cream backdrops, so a true dark/inverted theme fights the
+   images instead of complementing them. --forest stays a deep,
+   low-lightness color in every theme (same role as the original:
+   headings, nav text, and the solid dark section backgrounds like
+   the announce bar / "Why Rosaleigh" band / footer / newsletter).
    ========================================================= */
 :root[data-theme="rosegold"]{
-  --bg:#FFF8F6; --surface:#F9E9E4;
-  --forest:#7A3B41; --forest-light:#9A4F56;
-  --sage:#C08A8A; --gold:#B76E79; --gold-light:#D99DA3;
+  --bg:#FFF8F6; --surface:#FBEDE9;
+  --forest:#3D1F22; --forest-light:#55292E;
+  --sage:#B98A87; --gold:#B76E79; --gold-light:#D99DA3;
   --ink:#3A2220; --muted:#8A6360; --border:#EBD3CE;
 }
 :root[data-theme="lavender"]{
-  --bg:#FAF7FF; --surface:#EFE6FA;
-  --forest:#4B3966; --forest-light:#5F4A80;
+  --bg:#FAF8FC; --surface:#F1E9F7;
+  --forest:#2A2140; --forest-light:#3D3159;
   --sage:#A796C2; --gold:#8E6FBB; --gold-light:#B49AD6;
   --ink:#241B33; --muted:#6E5E85; --border:#DCCFEE;
 }
-:root[data-theme="midnight"]{
-  --bg:#14181A; --surface:#1F2528;
-  --forest:#E8CFA0; --forest-light:#F0DDB6;
-  --sage:#8A9E96; --gold:#E89FB4; --gold-light:#F0BBCB;
-  --ink:#F2EFEA; --muted:#A6ADA9; --border:#333B3E; --card-bg:#1C2124;
+:root[data-theme="terracotta"]{
+  --bg:#FDF6F0; --surface:#F7E8DB;
+  --forest:#3D2B1F; --forest-light:#55402F;
+  --sage:#B08D6E; --gold:#C1683F; --gold-light:#DB9670;
+  --ink:#2E2016; --muted:#8A6F55; --border:#EDD9C4;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
