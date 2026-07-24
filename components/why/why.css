@@ -44,14 +44,14 @@
 .why-item h4{
     font-family:'Cormorant Garamond',serif;
     font-size:22px;
-    color:#F0E8D6;
+    color:var(--bg);
     margin-bottom:10px;
     font-weight:500;
 }
 
 .why-item p{
     font-size:13.5px;
-    color:#9DAE96;
+    color:var(--sage);
     line-height:1.6;
 }
 
