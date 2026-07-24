@@ -11,10 +11,37 @@
   --forest:#1F352A; --forest-light:#2C4A3A;
   --sage:#7A8B78; --gold:#B79A5A; --gold-light:#D4B87A;
   --ink:#2E241D; --muted:#6B5F52; --border:#E5DCD0; --radius:14px;
+  --card-bg:#FFFFFF;
+}
+
+/* =========================================================
+   COLOR THEMES — alternate palettes, toggled via
+   document.documentElement.setAttribute('data-theme', name)
+   Every value below maps 1:1 to the default palette above,
+   so every component that already uses var(--forest) etc.
+   re-colors automatically with no extra work.
+   ========================================================= */
+:root[data-theme="rosegold"]{
+  --bg:#FFF8F6; --surface:#F9E9E4;
+  --forest:#7A3B41; --forest-light:#9A4F56;
+  --sage:#C08A8A; --gold:#B76E79; --gold-light:#D99DA3;
+  --ink:#3A2220; --muted:#8A6360; --border:#EBD3CE;
+}
+:root[data-theme="lavender"]{
+  --bg:#FAF7FF; --surface:#EFE6FA;
+  --forest:#4B3966; --forest-light:#5F4A80;
+  --sage:#A796C2; --gold:#8E6FBB; --gold-light:#B49AD6;
+  --ink:#241B33; --muted:#6E5E85; --border:#DCCFEE;
+}
+:root[data-theme="midnight"]{
+  --bg:#14181A; --surface:#1F2528;
+  --forest:#E8CFA0; --forest-light:#F0DDB6;
+  --sage:#8A9E96; --gold:#E89FB4; --gold-light:#F0BBCB;
+  --ink:#F2EFEA; --muted:#A6ADA9; --border:#333B3E; --card-bg:#1C2124;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--ink);font-family:'Manrope',sans-serif;font-weight:400;line-height:1.65;overflow-x:hidden;}
+body{background:var(--bg);color:var(--ink);font-family:'Manrope',sans-serif;font-weight:400;line-height:1.65;overflow-x:hidden;transition:background-color .4s ease,color .4s ease;}
 h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;letter-spacing:0.01em;color:var(--forest);}
 a{color:inherit;text-decoration:none;}
 img{display:block;background:var(--surface);}
@@ -41,7 +68,7 @@ button{font-family:'Manrope',sans-serif;cursor:pointer;border:none;outline:none;
 .products{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;justify-content:center;}
 .products:has(.product-card:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,280px));}
 .products:has(.product-card:nth-child(2):last-child){grid-template-columns:repeat(2,minmax(0,280px));}
-.product-card{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);transition:box-shadow .35s,transform .35s,border-color .35s;position:relative;display:flex;flex-direction:column;height:100%;}
+.product-card{background:var(--card-bg);border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);transition:box-shadow .35s,transform .35s,border-color .35s;position:relative;display:flex;flex-direction:column;height:100%;}
 .product-card:hover{box-shadow:0 25px 55px rgba(31,53,42,0.14);transform:translateY(-6px);border-color:transparent;}
 .product-thumb{aspect-ratio:4/5;overflow:hidden;position:relative;background:var(--surface);padding:24px;}
 .product-thumb img{width:100%;height:100%;object-fit:contain;transition:transform .6s cubic-bezier(.2,.8,.2,1);}
@@ -90,17 +117,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .section.tight{padding:48px 0;}
   .sec-head{margin-bottom:40px;}
   .sec-head h2{font-size:30px;}
-<<<<<<< HEAD
-=======
-}
-
-/* NEW: extra tightening for very small phones */
-@media(max-width:400px){
-  .container{padding:0 16px;}
-  .section{padding:48px 0;}
-  .section.tight{padding:36px 0;}
-  .sec-head h2{font-size:26px;}
->>>>>>> b754580e49a767a2a5a2416517bd90e6010a4e91
 }
 
 /* NEW: extra tightening for very small phones */
