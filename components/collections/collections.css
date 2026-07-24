@@ -5,7 +5,7 @@
 
 .featured-collections{
     padding:40px 0;
-    background:#F8F6F1;
+    background:var(--surface);
     overflow:hidden;
 }
 
@@ -26,7 +26,7 @@
     font-weight:600;
     letter-spacing:.22em;
     text-transform:uppercase;
-    color:#6A7B69;
+    color:var(--sage);
 }
 
 .sec-head h2{
@@ -34,7 +34,7 @@
     font-size:42px;
     font-weight:500;
     line-height:1;
-    color:#183629;
+    color:var(--forest);
     margin:0;
 }
 
@@ -42,7 +42,7 @@
     width:70px;
     height:2px;
     margin:18px auto 0;
-    background:#C7A35A;
+    background:var(--gold);
     border-radius:50px;
 }
 
@@ -75,9 +75,9 @@
     overflow:hidden;
     border-radius:22px;
     text-decoration:none;
-    background:#ece9e3;
+    background:var(--surface);
     isolation:isolate;
-    box-shadow:0 8px 28px rgba(0,0,0,.07);
+    box-shadow:0 8px 28px rgba(var(--forest-rgb),.08);
     transition:
         transform .45s ease,
         box-shadow .45s ease;
@@ -85,7 +85,7 @@
 
 .coll-card:hover{
     transform:translateY(-6px);
-    box-shadow:0 18px 42px rgba(0,0,0,.15);
+    box-shadow:0 18px 42px rgba(var(--forest-rgb),.16);
 }
 
 /*====================================================
@@ -118,11 +118,11 @@
     background:
     linear-gradient(
         to top,
-        rgba(0,0,0,.92) 0%,
-        rgba(0,0,0,.75) 12%,
-        rgba(0,0,0,.45) 25%,
-        rgba(0,0,0,.15) 40%,
-        rgba(0,0,0,0) 55%
+        rgba(var(--forest-rgb),.92) 0%,
+        rgba(var(--forest-rgb),.75) 12%,
+        rgba(var(--forest-rgb),.45) 25%,
+        rgba(var(--forest-rgb),.15) 40%,
+        rgba(var(--forest-rgb),0) 55%
     );
 }
 
@@ -144,7 +144,7 @@
     letter-spacing:.18em;
     text-transform:uppercase;
     color:rgba(255,255,255,.92);
-    text-shadow:0 2px 6px rgba(0,0,0,.35);
+    text-shadow:0 2px 6px rgba(var(--forest-rgb),.4);
 }
 
 .coll-title{
@@ -161,8 +161,8 @@
     font-weight:500;
     color:#fff;
     text-shadow:
-        0 3px 12px rgba(0,0,0,.55),
-        0 10px 35px rgba(0,0,0,.35);
+        0 3px 12px rgba(var(--forest-rgb),.6),
+        0 10px 35px rgba(var(--forest-rgb),.4);
 }
 
 .c2 .coll-title,
@@ -182,7 +182,7 @@
 
     font-size:20px;
     line-height:1;
-    color:#C7A35A;
+    color:var(--gold);
     transition:transform .35s ease, color .35s ease;
 }
 
