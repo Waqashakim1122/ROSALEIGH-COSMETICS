@@ -41,9 +41,32 @@
       </a>
     </div>
     <nav class="nav-right">
+      <a href="skin-test.html">Skin Test</a>
       <a href="about.html">Journal</a>
       <a href="about.html">About</a>
       <a href="contact.html">Account</a>
+      <div class="theme-switcher">
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Change color theme" aria-expanded="false" aria-controls="theme-panel">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="13.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="8" cy="4.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="6.5" cy="10.5" r="1.2" fill="currentColor" stroke="none"/><path d="M12 2a10 10 0 1 0 10 10c0-1.1-.9-2-2-2h-2a2.5 2.5 0 0 1 0-5c1.1 0 2-.9 2-2 0-1.65-3.58-3-8-3z"/></svg>
+        </button>
+        <div class="theme-panel" id="theme-panel" role="menu" aria-hidden="true">
+          <button class="theme-swatch" data-set-theme="default" role="menuitem" aria-label="Classic Forest & Gold theme">
+            <span class="swatch-dot" style="background:#1F352A"></span>Classic
+          </button>
+          <button class="theme-swatch" data-set-theme="rosegold" role="menuitem" aria-label="Rose Gold theme">
+            <span class="swatch-dot" style="background:#B76E79"></span>Rose Gold
+          </button>
+          <button class="theme-swatch" data-set-theme="lavender" role="menuitem" aria-label="Lavender Bloom theme">
+            <span class="swatch-dot" style="background:#8E6FBB"></span>Lavender
+          </button>
+          <button class="theme-swatch" data-set-theme="terracotta" role="menuitem" aria-label="Terracotta Clay theme">
+            <span class="swatch-dot" style="background:#C1683F"></span>Terracotta
+          </button>
+          <button class="theme-swatch" data-set-theme="vintage" role="menuitem" aria-label="Vintage Sepia theme">
+            <span class="swatch-dot" style="background:#A9793C"></span>Vintage
+          </button>
+        </div>
+      </div>
       <a href="cart.html" class="cart-chip">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.6L22 6H6"/><circle cx="9.5" cy="21" r="1.4" fill="currentColor" stroke="none"/><circle cx="18" cy="21" r="1.4" fill="currentColor" stroke="none"/></svg>
         Cart <span class="cart-bubble">0</span>
@@ -78,6 +101,7 @@
     </div>
 
     <nav class="mobile-drawer-links" aria-label="Mobile">
+      <a href="skin-test.html" class="drawer-link">Skin Test</a>
       <a href="shop.html" class="drawer-link">Shop</a>
       <a href="shop.html" class="drawer-link">Collections</a>
       <a href="about.html#ingredients" class="drawer-link">Ingredients</a>
@@ -92,6 +116,27 @@
       <div>
         <p class="drawer-promo-title">Free shipping over $75</p>
         <p class="drawer-promo-sub">Use code <strong>WELCOME10</strong> for 10% off</p>
+      </div>
+    </div>
+
+    <div class="drawer-theme-switcher">
+      <span class="drawer-theme-label">Color theme</span>
+      <div class="drawer-theme-row">
+        <button class="theme-swatch theme-swatch--drawer" data-set-theme="default" aria-label="Classic Forest & Gold theme">
+          <span class="swatch-dot" style="background:#1F352A"></span>
+        </button>
+        <button class="theme-swatch theme-swatch--drawer" data-set-theme="rosegold" aria-label="Rose Gold theme">
+          <span class="swatch-dot" style="background:#B76E79"></span>
+        </button>
+        <button class="theme-swatch theme-swatch--drawer" data-set-theme="lavender" aria-label="Lavender Bloom theme">
+          <span class="swatch-dot" style="background:#8E6FBB"></span>
+        </button>
+        <button class="theme-swatch theme-swatch--drawer" data-set-theme="terracotta" aria-label="Terracotta Clay theme">
+          <span class="swatch-dot" style="background:#C1683F"></span>
+        </button>
+        <button class="theme-swatch theme-swatch--drawer" data-set-theme="vintage" aria-label="Vintage Sepia theme">
+          <span class="swatch-dot" style="background:#A9793C"></span>
+        </button>
       </div>
     </div>
 
@@ -120,11 +165,11 @@
   <div class="container product-detail">
     <div>
   <div class="pd-gallery-main">
-    <img id="pd-main-img" src="images/products/heritage-tallow-balm.png" alt="Rosaleigh Heritage Tallow Balm">
+    <img id="pd-main-img" class="theme-img" src="images/products/tallow-balm.jpg" alt="Tallow Balm">
   </div>
   <div class="pd-thumbs">
-    <div class="pd-thumb active" onclick="swapImg(this,'images/products/heritage-tallow-balm.png')">
-      <img loading="lazy" decoding="async" src="images/products/heritage-tallow-balm.png">
+    <div class="pd-thumb active" onclick="swapImg(this,'images/products/tallow-balm.jpg')">
+      <img class="theme-img" loading="lazy" decoding="async" src="images/products/tallow-balm.jpg">
     </div>
     <div class="pd-thumb" onclick="swapImg(this,'https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=800&q=80')">
       <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=200&q=80">
@@ -136,7 +181,7 @@
 </div>
     <div class="pd-info">
   <p class="eyebrow">Repair &amp; Restore</p>
-  <h1 class="pname-lg">Heritage Tallow Balm</h1>
+  <h1 class="pname-lg">Tallow Balm</h1>
   <div class="pd-stars">★★★★★ <span>4.9 · 4,872 reviews</span></div>
   <div class="pd-price"><span class="was">$44.00</span>$36.00</div>
   <p class="pd-desc">A rich, barrier-restoring face &amp; body balm handcrafted with grass-fed tallow, ceramide and hyaluronic acid. Delivers deep hydration and skin barrier support for all skin types — leaving skin soft, resilient and glowing. Net weight 70g (2.5 oz).</p>
@@ -196,23 +241,23 @@
     </div>
     <div class="products">
       <div class="product-card">
-        <a href="product.html"><div class="product-thumb"><span class="badge new-badge">New</span><img loading="lazy" decoding="async" src="images/products/spf60-sunscreen-lotion.png" alt="Sunscreen Lotion SPF 60"></div></a>
+        <a href="product.html"><div class="product-thumb"><span class="badge new-badge">New</span><img loading="lazy" decoding="async" class="theme-img" src="images/products/spf50-sunscreen.jpg" alt="Sun Screen SPF 50+"></div></a>
         <div class="product-info">
-          <a href="product.html" style="color:inherit;"><div class="pname">Sunscreen Lotion SPF 60</div></a>
+          <a href="product.html" style="color:inherit;"><div class="pname">Sun Screen SPF 50+</div></a>
           <div class="stars">★★★★★ <span>(1,323)</span></div>
           <div class="price-row">
-            <div class="price">$34.00</div>
+            <div class="price">$32.00</div>
             <button class="btn-add">+ Add to Cart</button>
           </div>
         </div>
       </div>
       <div class="product-card">
-        <a href="product.html"><div class="product-thumb"><img loading="lazy" decoding="async" src="images/products/pdrn-calcium-multi-balm.png" alt="Korean PDRN Calcium Multi Balm"></div></a>
+        <a href="product.html"><div class="product-thumb"><img loading="lazy" decoding="async" class="theme-img" src="images/products/lip-balm.jpg" alt="Nourishing Lip Balm"></div></a>
         <div class="product-info">
-          <a href="product.html" style="color:inherit;"><div class="pname">Korean PDRN Calcium Multi Balm</div></a>
-          <div class="stars">★★★★★ <span>(967)</span></div>
+          <a href="product.html" style="color:inherit;"><div class="pname">Lip Balm</div></a>
+          <div class="stars">★★★★★ <span>(582)</span></div>
           <div class="price-row">
-            <div class="price">$38.00</div>
+            <div class="price">$14.00</div>
             <button class="btn-add">+ Add to Cart</button>
           </div>
         </div>
