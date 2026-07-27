@@ -1,0 +1,306 @@
+/*====================================================
+    FEATURED COLLECTIONS
+    Premium Luxury UI v3
+====================================================*/
+
+.featured-collections{
+    padding:40px 0;
+    background:var(--surface);
+    overflow:hidden;
+}
+
+/*====================================================
+    SECTION HEADING
+====================================================*/
+
+.sec-head{
+    text-align:center;
+    max-width:720px;
+    margin:0 auto 24px;
+}
+
+.sec-head .eyebrow{
+    display:inline-block;
+    margin-bottom:10px;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--sage);
+}
+
+.sec-head h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:42px;
+    font-weight:500;
+    line-height:1;
+    color:var(--forest);
+    margin:0;
+}
+
+.sec-head .rule{
+    width:70px;
+    height:2px;
+    margin:18px auto 0;
+    background:var(--gold);
+    border-radius:50px;
+}
+
+/*====================================================
+    GRID
+====================================================*/
+
+.collections{
+    display:grid;
+    grid-template-columns:1.15fr 0.92fr 0.92fr;
+    grid-template-rows:28vh 28vh 26vh;
+    gap:14px;
+}
+
+.c1{
+    grid-row:1 / span 2;
+}
+
+.shop-all-banner{
+    grid-column:1 / -1;
+}
+
+/*====================================================
+    CARD
+====================================================*/
+
+.coll-card{
+    position:relative;
+    display:block;
+    overflow:hidden;
+    border-radius:22px;
+    text-decoration:none;
+    background:var(--surface);
+    isolation:isolate;
+    box-shadow:0 8px 28px rgba(var(--forest-rgb),.08);
+    transition:
+        transform .45s ease,
+        box-shadow .45s ease;
+}
+
+.coll-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 42px rgba(var(--forest-rgb),.16);
+}
+
+/*====================================================
+    IMAGE
+====================================================*/
+
+.coll-card img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    transition:transform .9s ease;
+}
+
+.coll-card:hover img{
+    transform:scale(1.05);
+}
+
+/*====================================================
+    OVERLAY
+====================================================*/
+
+.coll-overlay{
+    position:absolute;
+    inset:0;
+    z-index:1;
+
+    background:
+    linear-gradient(
+        to top,
+        rgba(var(--forest-rgb),.92) 0%,
+        rgba(var(--forest-rgb),.75) 12%,
+        rgba(var(--forest-rgb),.45) 25%,
+        rgba(var(--forest-rgb),.15) 40%,
+        rgba(var(--forest-rgb),0) 55%
+    );
+}
+
+/*====================================================
+    TEXT — stacked, anchored bottom-left, independent
+    of the arrow so titles never wrap or collide
+====================================================*/
+
+.coll-category{
+    position:absolute;
+    left:24px;
+    right:80px;
+    bottom:52px;
+    z-index:5;
+
+    display:block;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.92);
+    text-shadow:0 2px 6px rgba(var(--forest-rgb),.4);
+}
+
+.coll-title{
+    position:absolute;
+    left:24px;
+    right:80px;
+    bottom:20px;
+    z-index:5;
+
+    margin:0;
+    font-family:'Cormorant Garamond',serif;
+    font-size:26px;
+    line-height:1.1;
+    font-weight:500;
+    color:#fff;
+    text-shadow:
+        0 3px 12px rgba(var(--forest-rgb),.6),
+        0 10px 35px rgba(var(--forest-rgb),.4);
+}
+
+.coll-card-sm .coll-title{
+    font-size:19px;
+}
+
+/*====================================================
+    ARROW — independent, anchored bottom-right corner
+====================================================*/
+
+.coll-arrow{
+    position:absolute;
+    right:24px;
+    bottom:20px;
+    z-index:5;
+
+    font-size:20px;
+    line-height:1;
+    color:var(--gold);
+    transition:transform .35s ease, color .35s ease;
+}
+
+.coll-card:hover .coll-arrow{
+    transform:translateX(8px);
+    color:#fff;
+}
+
+/*====================================================
+    TABLET
+====================================================*/
+
+@media (max-width:1100px){
+
+.collections{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:32vh 24vh 24vh 24vh;
+}
+
+.c1{
+    grid-column:1 / span 2;
+    grid-row:auto;
+}
+
+.shop-all-banner{
+    grid-column:1 / span 2;
+}
+
+.sec-head h2{
+    font-size:38px;
+}
+
+}
+
+/*====================================================
+    MOBILE
+====================================================*/
+
+@media (max-width:768px){
+
+.featured-collections{
+    padding:36px 0;
+}
+
+.sec-head{
+    margin-bottom:24px;
+}
+
+.sec-head h2{
+    font-size:32px;
+}
+
+.collections{
+    grid-template-columns:1fr;
+    grid-template-rows:auto;
+    gap:14px;
+}
+
+.coll-card{
+    grid-column:auto;
+    grid-row:auto;
+    height:280px;
+}
+
+.coll-category,
+.coll-title{
+    left:20px;
+    right:70px;
+}
+
+.coll-category{
+    bottom:48px;
+}
+
+.coll-title{
+    bottom:18px;
+    font-size:24px;
+}
+
+.coll-arrow{
+    right:20px;
+    bottom:18px;
+}
+
+}
+
+/*====================================================
+    SMALL MOBILE
+====================================================*/
+
+@media (max-width:480px){
+
+.featured-collections{
+    padding:28px 0;
+}
+
+.sec-head h2{
+    font-size:28px;
+}
+
+.sec-head .rule{
+    width:60px;
+}
+
+.coll-card{
+    height:250px;
+    border-radius:18px;
+}
+
+.coll-category{
+    font-size:11px;
+}
+
+.coll-title{
+    font-size:22px;
+}
+
+.coll-arrow{
+    font-size:16px;
+}
+
+}

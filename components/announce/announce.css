@@ -1,0 +1,3 @@
+/* ANNOUNCEMENT BAR component */
+.announce{background:var(--forest);color:var(--gold-light);text-align:center;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;padding:11px 20px;font-weight:600;}
+.announce span{color:var(--gold-light);}

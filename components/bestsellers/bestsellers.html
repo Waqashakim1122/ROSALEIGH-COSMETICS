@@ -1,0 +1,103 @@
+<section class="section tight reveal" style="background:var(--surface);">
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow">Loved by 100,000+</p>
+      <h2>Our Best Sellers</h2>
+      <div class="rule"></div>
+      <p class="sec-rating">
+        <span class="stars" style="--rating:4.9;"></span>
+        <span class="sec-rating-text"><strong>4.9</strong> average rating &middot; 7,900+ verified reviews</span>
+      </p>
+    </div>
+
+    <div class="products">
+
+      <div class="product-card">
+        <a href="product.html" class="product-thumb-link">
+          <div class="product-thumb">
+            <span class="badge badge--bestseller">Best Seller</span>
+            <img loading="lazy" decoding="async" class="theme-img" src="images/products/tallow-balm.jpg" alt="Grass-Fed Tallow Balm">
+          </div>
+        </a>
+        <div class="product-info">
+          <a href="product.html" class="pname-link"><div class="pname">Tallow Balm</div></a>
+          <div class="stars-row">
+            <span class="stars" style="--rating:5;"></span>
+            <span class="rcount">(4,872)</span>
+          </div>
+          <div class="price-row">
+            <div class="price">$36.00</div>
+            <button class="btn-add" aria-label="Add Tallow Balm to cart">
+              <svg viewBox="0 0 12 12" class="btn-add-icon"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <span class="btn-add-label">Add to Cart</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <a href="product.html" class="product-thumb-link">
+          <div class="product-thumb">
+            <span class="badge badge--new">New</span>
+            <img loading="lazy" decoding="async" class="theme-img" src="images/products/spf50-sunscreen.jpg" alt="Sun Screen SPF 50+">
+          </div>
+        </a>
+        <div class="product-info">
+          <a href="product.html" class="pname-link"><div class="pname">Sun Screen SPF 50+</div></a>
+          <div class="stars-row">
+            <span class="stars" style="--rating:5;"></span>
+            <span class="rcount">(1,323)</span>
+          </div>
+          <div class="price-row">
+            <div class="price">$32.00</div>
+            <button class="btn-add" aria-label="Add Sun Screen SPF 50+ to cart">
+              <svg viewBox="0 0 12 12" class="btn-add-icon"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <span class="btn-add-label">Add to Cart</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <a href="product.html" class="product-thumb-link">
+          <div class="product-thumb">
+            <span class="badge badge--editor">Editor's Pick</span>
+            <img loading="lazy" decoding="async" class="theme-img" src="images/products/pdrn-anti-wrinkle-stick.jpg" alt="PDRN + Collagen + NAD Anti-Wrinkle Core Stick">
+          </div>
+        </a>
+        <div class="product-info">
+          <a href="product.html" class="pname-link"><div class="pname">PDRN Anti-Wrinkle Core Stick</div></a>
+          <div class="stars-row">
+            <span class="stars" style="--rating:5;"></span>
+            <span class="rcount">(967)</span>
+          </div>
+          <div class="price-row">
+            <div class="price">$42.00</div>
+            <button class="btn-add" aria-label="Add PDRN Anti-Wrinkle Core Stick to cart">
+              <svg viewBox="0 0 12 12" class="btn-add-icon"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <span class="btn-add-label">Add to Cart</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+document.querySelectorAll('.section.tight .btn-add').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (btn.classList.contains('is-added')) return;
+    const label = btn.querySelector('.btn-add-label');
+    const originalText = label.textContent;
+    label.textContent = 'Added ✓';
+    btn.classList.add('is-added');
+    setTimeout(() => {
+      label.textContent = originalText;
+      btn.classList.remove('is-added');
+    }, 1800);
+  });
+});
+</script>

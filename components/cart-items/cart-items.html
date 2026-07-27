@@ -1,0 +1,51 @@
+<div id="cart-items-wrap">
+  <div class="cart-table-head">
+    <div>Product</div><div>Price</div><div>Quantity</div><div>Total</div><div></div>
+  </div>
+
+  <div class="cart-row" data-price="36.00">
+    <div class="cart-prod">
+      <div class="cart-thumb"><img loading="lazy" decoding="async" class="theme-img" src="images/products/tallow-balm.jpg"></div>
+      <div>
+        <div class="cart-pname">Tallow Balm</div>
+        <div class="cart-pvar">Format: Single — 70g</div>
+        <div class="cart-remove" onclick="removeRow(this)">Remove</div>
+      </div>
+    </div>
+    <div class="cart-price">$36.00</div>
+    <div class="cart-qty">
+      <div class="qty-box">
+        <button onclick="rowQty(this,-1)">−</button>
+        <span class="row-qty">1</span>
+        <button onclick="rowQty(this,1)">+</button>
+      </div>
+    </div>
+    <div class="cart-total row-total">$36.00</div>
+    <div></div>
+  </div>
+
+  <div class="cart-row" data-price="42.00">
+    <div class="cart-prod">
+      <div class="cart-thumb"><img loading="lazy" decoding="async" class="theme-img" src="images/products/pdrn-anti-wrinkle-stick.jpg"></div>
+      <div>
+        <div class="cart-pname">PDRN Anti-Wrinkle Core Stick</div>
+        <div class="cart-pvar">Size: 10g</div>
+        <div class="cart-remove" onclick="removeRow(this)">Remove</div>
+      </div>
+    </div>
+    <div class="cart-price">$42.00</div>
+    <div class="cart-qty">
+      <div class="qty-box">
+        <button onclick="rowQty(this,-1)">−</button>
+        <span class="row-qty">1</span>
+        <button onclick="rowQty(this,1)">+</button>
+      </div>
+    </div>
+    <div class="cart-total row-total">$42.00</div>
+    <div></div>
+  </div>
+
+  <div style="margin-top:32px;">
+    <a href="shop.html"><button class="btn-ghost">← Continue Shopping</button></a>
+  </div>
+</div>

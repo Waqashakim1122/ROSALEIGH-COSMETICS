@@ -1,0 +1,10 @@
+/* CART SUMMARY (order totals) component */
+.cart-summary{background:var(--surface);border-radius:var(--radius);padding:32px;border:1px solid var(--border);position:sticky;top:110px;}
+.cart-summary h3{font-size:22px;margin-bottom:24px;}
+.summary-row{display:flex;justify-content:space-between;font-size:13.5px;color:var(--muted);margin-bottom:14px;}
+.summary-row.total{border-top:1px solid var(--border);padding-top:18px;margin-top:6px;font-size:16px;font-weight:700;color:var(--forest);font-family:'Manrope',sans-serif;}
+.promo-row{display:flex;gap:8px;margin:22px 0;}
+.promo-row input{flex:1;padding:12px 14px;border:1px solid var(--border);border-radius:4px;font-size:12.5px;font-family:'Manrope',sans-serif;}
+.promo-row button{background:var(--forest);color:#fff;padding:12px 18px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;}
+
+@media(max-width:1024px){ .cart-summary{position:static;} }
