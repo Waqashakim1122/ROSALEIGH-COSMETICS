@@ -20,6 +20,49 @@
     document.querySelectorAll('.theme-swatch').forEach(function(btn){
       btn.classList.toggle('active', btn.getAttribute('data-set-theme') === (theme || 'default'));
     });
+    applyThemedImages(theme);
+  }
+
+  // ---- THEMED IMAGES ----
+  // Har <img class="theme-img"> ke liye, default src ko yaad rakha jata hai
+  // (data-default-src). Jab koi non-default theme choose hoti hai, to yeh
+  // "images/..." ko "images/themes/<theme>/..." se replace karke woh image
+  // load karne ki koshish karta hai. Agar us theme ke liye woh image abhi
+  // maujood nahi (file missing / 404), to chup-chaap original image par
+  // wapas gir jata hai — site kabhi tooti hui image nahi dikhati.
+  //
+  // Naya theme-specific image add karne ke liye: bas original image ka
+  // hi naam/size rakh kar usko "images/themes/<theme>/..." wale
+  // matching path par rakh do (see images/themes/README.md).
+  function applyThemedImages(theme){
+    const activeTheme = theme || 'default';
+    document.querySelectorAll('img.theme-img').forEach(function(img){
+      let defaultSrc = img.getAttribute('data-default-src');
+      if(!defaultSrc){
+        defaultSrc = img.getAttribute('src');
+        img.setAttribute('data-default-src', defaultSrc);
+      }
+
+      if(activeTheme === 'default'){
+        img.src = defaultSrc;
+        return;
+      }
+
+      const themedSrc = defaultSrc.replace(/^images\//, 'images/themes/' + activeTheme + '/');
+      const probe = new Image();
+      probe.onload = function(){
+        // Theme ki apni image maujood hai — usse dikhao.
+        // (Agar tab tak theme dobara badal chuki hai to skip kar do.)
+        if(document.documentElement.getAttribute('data-theme') === activeTheme || (activeTheme === 'default' && !document.documentElement.getAttribute('data-theme'))){
+          img.src = themedSrc;
+        }
+      };
+      probe.onerror = function(){
+        // Us theme ke liye custom image nahi mili — original par rakho.
+        img.src = defaultSrc;
+      };
+      probe.src = themedSrc;
+    });
   }
 
   // Apply saved theme immediately (before other setup) to avoid a flash
