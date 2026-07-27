@@ -40,9 +40,32 @@
       </a>
     </div>
     <nav class="nav-right">
+      <a href="skin-test.html">Skin Test</a>
       <a href="about.html">Journal</a>
       <a href="about.html">About</a>
       <a href="contact.html">Account</a>
+      <div class="theme-switcher">
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Change color theme" aria-expanded="false" aria-controls="theme-panel">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="13.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="8" cy="4.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="6.5" cy="10.5" r="1.2" fill="currentColor" stroke="none"/><path d="M12 2a10 10 0 1 0 10 10c0-1.1-.9-2-2-2h-2a2.5 2.5 0 0 1 0-5c1.1 0 2-.9 2-2 0-1.65-3.58-3-8-3z"/></svg>
+        </button>
+        <div class="theme-panel" id="theme-panel" role="menu" aria-hidden="true">
+          <button class="theme-swatch" data-set-theme="default" role="menuitem" aria-label="Classic Forest & Gold theme">
+            <span class="swatch-dot" style="background:#1F352A"></span>Classic
+          </button>
+          <button class="theme-swatch" data-set-theme="rosegold" role="menuitem" aria-label="Rose Gold theme">
+            <span class="swatch-dot" style="background:#B76E79"></span>Rose Gold
+          </button>
+          <button class="theme-swatch" data-set-theme="lavender" role="menuitem" aria-label="Lavender Bloom theme">
+            <span class="swatch-dot" style="background:#8E6FBB"></span>Lavender
+          </button>
+          <button class="theme-swatch" data-set-theme="terracotta" role="menuitem" aria-label="Terracotta Clay theme">
+            <span class="swatch-dot" style="background:#C1683F"></span>Terracotta
+          </button>
+          <button class="theme-swatch" data-set-theme="vintage" role="menuitem" aria-label="Vintage Sepia theme">
+            <span class="swatch-dot" style="background:#A9793C"></span>Vintage
+          </button>
+        </div>
+      </div>
       <a href="cart.html" class="cart-chip">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.6L22 6H6"/><circle cx="9.5" cy="21" r="1.4" fill="currentColor" stroke="none"/><circle cx="18" cy="21" r="1.4" fill="currentColor" stroke="none"/></svg>
         Cart <span class="cart-bubble">0</span>
@@ -77,6 +100,7 @@
     </div>
 
     <nav class="mobile-drawer-links" aria-label="Mobile">
+      <a href="skin-test.html" class="drawer-link">Skin Test</a>
       <a href="shop.html" class="drawer-link">Shop</a>
       <a href="shop.html" class="drawer-link">Collections</a>
       <a href="about.html#ingredients" class="drawer-link">Ingredients</a>
@@ -91,6 +115,27 @@
       <div>
         <p class="drawer-promo-title">Free shipping over $75</p>
         <p class="drawer-promo-sub">Use code <strong>WELCOME10</strong> for 10% off</p>
+      </div>
+    </div>
+
+    <div class="drawer-theme-switcher">
+      <span class="drawer-theme-label">Color theme</span>
+      <div class="drawer-theme-row">
+        <button class="theme-swatch theme-swatch--drawer" data-set-theme="default" aria-label="Classic Forest & Gold theme">
+          <span class="swatch-dot" style="background:#1F352A"></span>
+        </button>
+        <button class="theme-swatch theme-swatch--drawer" data-set-theme="rosegold" aria-label="Rose Gold theme">
+          <span class="swatch-dot" style="background:#B76E79"></span>
+        </button>
+        <button class="theme-swatch theme-swatch--drawer" data-set-theme="lavender" aria-label="Lavender Bloom theme">
+          <span class="swatch-dot" style="background:#8E6FBB"></span>
+        </button>
+        <button class="theme-swatch theme-swatch--drawer" data-set-theme="terracotta" aria-label="Terracotta Clay theme">
+          <span class="swatch-dot" style="background:#C1683F"></span>
+        </button>
+        <button class="theme-swatch theme-swatch--drawer" data-set-theme="vintage" aria-label="Vintage Sepia theme">
+          <span class="swatch-dot" style="background:#A9793C"></span>
+        </button>
       </div>
     </div>
 
@@ -125,9 +170,9 @@
 
   <div class="cart-row" data-price="36.00">
     <div class="cart-prod">
-      <div class="cart-thumb"><img loading="lazy" decoding="async" src="images/products/heritage-tallow-balm.png"></div>
+      <div class="cart-thumb"><img loading="lazy" decoding="async" class="theme-img" src="images/products/tallow-balm.jpg"></div>
       <div>
-        <div class="cart-pname">Heritage Tallow Balm</div>
+        <div class="cart-pname">Tallow Balm</div>
         <div class="cart-pvar">Format: Single — 70g</div>
         <div class="cart-remove" onclick="removeRow(this)">Remove</div>
       </div>
@@ -144,16 +189,16 @@
     <div></div>
   </div>
 
-  <div class="cart-row" data-price="38.00">
+  <div class="cart-row" data-price="42.00">
     <div class="cart-prod">
-      <div class="cart-thumb"><img loading="lazy" decoding="async" src="images/products/pdrn-calcium-multi-balm.png"></div>
+      <div class="cart-thumb"><img loading="lazy" decoding="async" class="theme-img" src="images/products/pdrn-anti-wrinkle-stick.jpg"></div>
       <div>
-        <div class="cart-pname">Korean PDRN Calcium Multi Balm</div>
+        <div class="cart-pname">PDRN Anti-Wrinkle Core Stick</div>
         <div class="cart-pvar">Size: 10g</div>
         <div class="cart-remove" onclick="removeRow(this)">Remove</div>
       </div>
     </div>
-    <div class="cart-price">$38.00</div>
+    <div class="cart-price">$42.00</div>
     <div class="cart-qty">
       <div class="qty-box">
         <button onclick="rowQty(this,-1)">−</button>
