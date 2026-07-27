@@ -49,9 +49,32 @@
       </a>
     </div>
     <nav class="nav-right">
+      <a href="skin-test.html">Skin Test</a>
       <a href="about.html">Journal</a>
       <a href="about.html">About</a>
       <a href="contact.html">Account</a>
+      <div class="theme-switcher">
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Change color theme" aria-expanded="false" aria-controls="theme-panel">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="13.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="8" cy="4.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="6.5" cy="10.5" r="1.2" fill="currentColor" stroke="none"/><path d="M12 2a10 10 0 1 0 10 10c0-1.1-.9-2-2-2h-2a2.5 2.5 0 0 1 0-5c1.1 0 2-.9 2-2 0-1.65-3.58-3-8-3z"/></svg>
+        </button>
+        <div class="theme-panel" id="theme-panel" role="menu" aria-hidden="true">
+          <button class="theme-swatch" data-set-theme="default" role="menuitem" aria-label="Classic Forest & Gold theme">
+            <span class="swatch-dot" style="background:#1F352A"></span>Classic
+          </button>
+          <button class="theme-swatch" data-set-theme="rosegold" role="menuitem" aria-label="Rose Gold theme">
+            <span class="swatch-dot" style="background:#B76E79"></span>Rose Gold
+          </button>
+          <button class="theme-swatch" data-set-theme="lavender" role="menuitem" aria-label="Lavender Bloom theme">
+            <span class="swatch-dot" style="background:#8E6FBB"></span>Lavender
+          </button>
+          <button class="theme-swatch" data-set-theme="terracotta" role="menuitem" aria-label="Terracotta Clay theme">
+            <span class="swatch-dot" style="background:#C1683F"></span>Terracotta
+          </button>
+          <button class="theme-swatch" data-set-theme="vintage" role="menuitem" aria-label="Vintage Sepia theme">
+            <span class="swatch-dot" style="background:#A9793C"></span>Vintage
+          </button>
+        </div>
+      </div>
       <a href="cart.html" class="cart-chip">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.6L22 6H6"/><circle cx="9.5" cy="21" r="1.4" fill="currentColor" stroke="none"/><circle cx="18" cy="21" r="1.4" fill="currentColor" stroke="none"/></svg>
         Cart <span class="cart-bubble">0</span>
@@ -86,6 +109,7 @@
     </div>
 
     <nav class="mobile-drawer-links" aria-label="Mobile">
+      <a href="skin-test.html" class="drawer-link">Skin Test</a>
       <a href="shop.html" class="drawer-link">Shop</a>
       <a href="shop.html" class="drawer-link">Collections</a>
       <a href="about.html#ingredients" class="drawer-link">Ingredients</a>
@@ -100,6 +124,27 @@
       <div>
         <p class="drawer-promo-title">Free shipping over $75</p>
         <p class="drawer-promo-sub">Use code <strong>WELCOME10</strong> for 10% off</p>
+      </div>
+    </div>
+
+    <div class="drawer-theme-switcher">
+      <span class="drawer-theme-label">Color theme</span>
+      <div class="drawer-theme-row">
+        <button class="theme-swatch theme-swatch--drawer" data-set-theme="default" aria-label="Classic Forest & Gold theme">
+          <span class="swatch-dot" style="background:#1F352A"></span>
+        </button>
+        <button class="theme-swatch theme-swatch--drawer" data-set-theme="rosegold" aria-label="Rose Gold theme">
+          <span class="swatch-dot" style="background:#B76E79"></span>
+        </button>
+        <button class="theme-swatch theme-swatch--drawer" data-set-theme="lavender" aria-label="Lavender Bloom theme">
+          <span class="swatch-dot" style="background:#8E6FBB"></span>
+        </button>
+        <button class="theme-swatch theme-swatch--drawer" data-set-theme="terracotta" aria-label="Terracotta Clay theme">
+          <span class="swatch-dot" style="background:#C1683F"></span>
+        </button>
+        <button class="theme-swatch theme-swatch--drawer" data-set-theme="vintage" aria-label="Vintage Sepia theme">
+          <span class="swatch-dot" style="background:#A9793C"></span>
+        </button>
       </div>
     </div>
 
@@ -120,7 +165,7 @@
 </div>
 <section class="hero-banner">
   <div class="hero-banner-bg">
-    <img src="images/hero/hero-products-natural.jpg" alt="Rosaleigh skincare products styled with olive branches" loading="eager">
+    <img class="theme-img" src="images/hero/hero-products-natural.jpg" alt="Rosaleigh skincare products styled with olive branches" loading="eager">
   </div>
   <div class="hero-glass" aria-hidden="true"></div>
 
@@ -150,44 +195,98 @@
   </div>
 </section>
 <div class="trustbar">
-  <div class="container">
-    <div class="tb-item">✦ 100% Grass-Fed Tallow</div>
-    <div class="tb-item">✦ Handcrafted Small Batches</div>
-    <div class="tb-item">✦ Clean & Non-Toxic</div>
-    <div class="tb-item">✦ Sensitive Skin Safe</div>
-    <div class="tb-item">✦ Loved by 100,000+</div>
+  <div class="tb-track">
+    <div class="tb-group">
+      <div class="tb-item"><span class="tb-star">✦</span> 100% Grass-Fed Tallow</div>
+      <div class="tb-item"><span class="tb-star">✦</span> Handcrafted Small Batches</div>
+      <div class="tb-item"><span class="tb-star">✦</span> Clean &amp; Non-Toxic</div>
+      <div class="tb-item"><span class="tb-star">✦</span> Sensitive Skin Safe</div>
+      <div class="tb-item"><span class="tb-star">✦</span> Loved by 100,000+</div>
+    </div>
+    <div class="tb-group" aria-hidden="true">
+      <div class="tb-item"><span class="tb-star">✦</span> 100% Grass-Fed Tallow</div>
+      <div class="tb-item"><span class="tb-star">✦</span> Handcrafted Small Batches</div>
+      <div class="tb-item"><span class="tb-star">✦</span> Clean &amp; Non-Toxic</div>
+      <div class="tb-item"><span class="tb-star">✦</span> Sensitive Skin Safe</div>
+      <div class="tb-item"><span class="tb-star">✦</span> Loved by 100,000+</div>
+    </div>
   </div>
 </div>
-<section class="section reveal">
-  <div class="container">
-    <div class="sec-head">
-      <p class="eyebrow">Shop by Category</p>
-      <h2>Featured Collections</h2>
-      <div class="rule"></div>
+<!-- =========================
+     FEATURED COLLECTIONS
+========================= -->
+
+<section class="section featured-collections reveal">
+
+    <div class="container">
+
+        <div class="sec-head">
+
+            <p class="eyebrow">SHOP BY CATEGORY</p>
+
+            <h2>Featured Collections</h2>
+
+            <div class="rule"></div>
+
+        </div>
+
+        <div class="collections">
+
+            <!-- Hero card: Tallow Balm, spans both rows on the left -->
+            <a href="product.html" class="coll-card c1">
+                <img class="theme-img" src="images/products/tallow-balm.jpg" alt="Tallow Balm" loading="lazy" decoding="async">
+                <div class="coll-overlay"></div>
+                <span class="coll-category">Repair &amp; Restore</span>
+                <h3 class="coll-title">Tallow Balm</h3>
+                <div class="coll-arrow">→</div>
+            </a>
+
+            <!-- 2x2 grid, auto-fills the remaining cells next to the hero card -->
+            <a href="product.html" class="coll-card coll-card-sm">
+                <img class="theme-img" src="images/products/spf50-sunscreen.jpg" alt="Sun Screen SPF 50+" loading="lazy" decoding="async">
+                <div class="coll-overlay"></div>
+                <span class="coll-category">Daily Protection</span>
+                <h3 class="coll-title">SPF 50+ Sunscreen</h3>
+                <div class="coll-arrow">→</div>
+            </a>
+
+            <a href="product.html" class="coll-card coll-card-sm">
+                <img class="theme-img" src="images/products/pdrn-anti-wrinkle-stick.jpg" alt="PDRN Anti-Wrinkle Core Stick" loading="lazy" decoding="async">
+                <div class="coll-overlay"></div>
+                <span class="coll-category">Advanced Anti-Aging</span>
+                <h3 class="coll-title">PDRN Core Stick</h3>
+                <div class="coll-arrow">→</div>
+            </a>
+
+            <a href="product.html" class="coll-card coll-card-sm">
+                <img class="theme-img" src="images/products/lip-balm.jpg" alt="Lip Balm" loading="lazy" decoding="async">
+                <div class="coll-overlay"></div>
+                <span class="coll-category">Lip Care</span>
+                <h3 class="coll-title">Lip Balm</h3>
+                <div class="coll-arrow">→</div>
+            </a>
+
+            <a href="product.html" class="coll-card coll-card-sm">
+                <img class="theme-img" src="images/products/deodorant-stick.jpg" alt="Deodorant Stick" loading="lazy" decoding="async">
+                <div class="coll-overlay"></div>
+                <span class="coll-category">Natural Deodorant</span>
+                <h3 class="coll-title">Deodorant Stick</h3>
+                <div class="coll-arrow">→</div>
+            </a>
+
+            <!-- Full-width Shop All banner -->
+            <a href="shop.html" class="coll-card shop-all-banner">
+                <img class="theme-img" src="images/products/shop-all-collection.jpg" alt="Shop the Full Rosaleigh Collection" loading="lazy" decoding="async">
+                <div class="coll-overlay"></div>
+                <span class="coll-category">Explore Collection</span>
+                <h3 class="coll-title">Shop All</h3>
+                <div class="coll-arrow">→</div>
+            </a>
+
+        </div>
+
     </div>
-    <div class="collections">
-      <a href="shop.html" class="coll-card c1">
-        <img loading="lazy" decoding="async" src="images/products/heritage-tallow-balm.png" alt="Heritage Tallow Balm" onerror="this.style.display='none'">
-        <div class="coll-overlay"></div>
-        <div class="coll-label"><div class="cat">Repair & Restore</div><h3>Heritage Tallow Balm</h3></div>
-      </a>
-      <a href="shop.html" class="coll-card c2">
-        <img loading="lazy" decoding="async" src="images/products/spf60-sunscreen-lotion.png" alt="Sunscreen Lotion SPF 60" onerror="this.style.display='none'">
-        <div class="coll-overlay"></div>
-        <div class="coll-label"><div class="cat">Daily Protection</div><h3>SPF 60</h3></div>
-      </a>
-      <a href="shop.html" class="coll-card c3">
-        <img loading="lazy" decoding="async" src="images/products/pdrn-calcium-multi-balm.png" alt="Korean PDRN Calcium Multi Balm" onerror="this.style.display='none'">
-        <div class="coll-overlay"></div>
-        <div class="coll-label"><div class="cat">Korean Innovation</div><h3>PDRN Multi Balm</h3></div>
-      </a>
-      <a href="shop.html" class="coll-card c4">
-        <img loading="lazy" decoding="async" src="images/products/spf60-sunscreen-lotion.png" alt="Shop All" onerror="this.style.display='none'">
-        <div class="coll-overlay"></div>
-        <div class="coll-label"><div class="cat">Full Range</div><h3>Shop All</h3></div>
-      </a>
-    </div>
-  </div>
+
 </section>
 <section class="section tight reveal" style="background:var(--surface);">
   <div class="container">
@@ -195,53 +294,103 @@
       <p class="eyebrow">Loved by 100,000+</p>
       <h2>Our Best Sellers</h2>
       <div class="rule"></div>
-      <p style="color:var(--gold);font-size:13.5px;font-weight:700;margin-top:16px;">★★★★★ <span style="color:var(--muted);font-weight:500;">4.9 average rating · 7,900+ verified reviews</span></p>
+      <p class="sec-rating">
+        <span class="stars" style="--rating:4.9;"></span>
+        <span class="sec-rating-text"><strong>4.9</strong> average rating &middot; 7,900+ verified reviews</span>
+      </p>
     </div>
+
     <div class="products">
+
       <div class="product-card">
-        <a href="product.html"><div class="product-thumb">
-          <span class="badge">Best Seller</span>
-          <img loading="lazy" decoding="async" src="images/products/heritage-tallow-balm.png" alt="Heritage Tallow Balm">
-        </div></a>
+        <a href="product.html" class="product-thumb-link">
+          <div class="product-thumb">
+            <span class="badge badge--bestseller">Best Seller</span>
+            <img loading="lazy" decoding="async" class="theme-img" src="images/products/tallow-balm.jpg" alt="Grass-Fed Tallow Balm">
+          </div>
+        </a>
         <div class="product-info">
-          <a href="product.html" style="color:inherit;"><div class="pname">Heritage Tallow Balm</div></a>
-          <div class="stars">★★★★★ <span>(4,872)</span></div>
+          <a href="product.html" class="pname-link"><div class="pname">Tallow Balm</div></a>
+          <div class="stars-row">
+            <span class="stars" style="--rating:5;"></span>
+            <span class="rcount">(4,872)</span>
+          </div>
           <div class="price-row">
             <div class="price">$36.00</div>
-            <button class="btn-add">+ Add to Cart</button>
+            <button class="btn-add" aria-label="Add Tallow Balm to cart">
+              <svg viewBox="0 0 12 12" class="btn-add-icon"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <span class="btn-add-label">Add to Cart</span>
+            </button>
           </div>
         </div>
       </div>
+
       <div class="product-card">
-        <a href="product.html"><div class="product-thumb">
-          <span class="badge new-badge">New</span>
-          <img loading="lazy" decoding="async" src="images/products/spf60-sunscreen-lotion.png" alt="Sunscreen Lotion SPF 60">
-        </div></a>
+        <a href="product.html" class="product-thumb-link">
+          <div class="product-thumb">
+            <span class="badge badge--new">New</span>
+            <img loading="lazy" decoding="async" class="theme-img" src="images/products/spf50-sunscreen.jpg" alt="Sun Screen SPF 50+">
+          </div>
+        </a>
         <div class="product-info">
-          <a href="product.html" style="color:inherit;"><div class="pname">Sunscreen Lotion SPF 60</div></a>
-          <div class="stars">★★★★★ <span>(1,323)</span></div>
+          <a href="product.html" class="pname-link"><div class="pname">Sun Screen SPF 50+</div></a>
+          <div class="stars-row">
+            <span class="stars" style="--rating:5;"></span>
+            <span class="rcount">(1,323)</span>
+          </div>
           <div class="price-row">
-            <div class="price">$34.00</div>
-            <button class="btn-add">+ Add to Cart</button>
+            <div class="price">$32.00</div>
+            <button class="btn-add" aria-label="Add Sun Screen SPF 50+ to cart">
+              <svg viewBox="0 0 12 12" class="btn-add-icon"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <span class="btn-add-label">Add to Cart</span>
+            </button>
           </div>
         </div>
       </div>
+
       <div class="product-card">
-        <a href="product.html"><div class="product-thumb">
-          <img loading="lazy" decoding="async" src="images/products/pdrn-calcium-multi-balm.png" alt="Korean PDRN Calcium Multi Balm">
-        </div></a>
+        <a href="product.html" class="product-thumb-link">
+          <div class="product-thumb">
+            <span class="badge badge--editor">Editor's Pick</span>
+            <img loading="lazy" decoding="async" class="theme-img" src="images/products/pdrn-anti-wrinkle-stick.jpg" alt="PDRN + Collagen + NAD Anti-Wrinkle Core Stick">
+          </div>
+        </a>
         <div class="product-info">
-          <a href="product.html" style="color:inherit;"><div class="pname">Korean PDRN Calcium Multi Balm</div></a>
-          <div class="stars">★★★★★ <span>(967)</span></div>
+          <a href="product.html" class="pname-link"><div class="pname">PDRN Anti-Wrinkle Core Stick</div></a>
+          <div class="stars-row">
+            <span class="stars" style="--rating:5;"></span>
+            <span class="rcount">(967)</span>
+          </div>
           <div class="price-row">
-            <div class="price">$38.00</div>
-            <button class="btn-add">+ Add to Cart</button>
+            <div class="price">$42.00</div>
+            <button class="btn-add" aria-label="Add PDRN Anti-Wrinkle Core Stick to cart">
+              <svg viewBox="0 0 12 12" class="btn-add-icon"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <span class="btn-add-label">Add to Cart</span>
+            </button>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
+
+<script>
+document.querySelectorAll('.section.tight .btn-add').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (btn.classList.contains('is-added')) return;
+    const label = btn.querySelector('.btn-add-label');
+    const originalText = label.textContent;
+    label.textContent = 'Added ✓';
+    btn.classList.add('is-added');
+    setTimeout(() => {
+      label.textContent = originalText;
+      btn.classList.remove('is-added');
+    }, 1800);
+  });
+});
+</script>
 <section class="why reveal">
   <div class="container">
     <div class="sec-head" style="margin-bottom:52px;">
@@ -323,7 +472,7 @@
     <div class="ingredient-collage">
       <div class="ingredient-img">
         <img loading="lazy" decoding="async"
-          src="images/ingredients/tallow-honey.jpg"
+          class="theme-img" src="images/ingredients/tallow-honey.jpg"
           alt="A bowl of whipped grass-fed tallow balm, styled with olive branches on natural stone">
         <span class="origin-tag">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3v18M5 8l7-5 7 5M5 8v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8"/></svg>
@@ -411,8 +560,8 @@
       <span class="press-logo">Vogue</span>
       <span class="press-logo">Well+Good</span>
       <span class="press-logo">goop</span>
-      <span class="press-logo" style="font-style:normal;font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;">THE ZOE REPORT</span>
-      <span class="press-logo" style="font-style:normal;font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.05em;">MindBodyGreen</span>
+      <span class="press-logo">The Zoe Report</span>
+      <span class="press-logo">MindBodyGreen</span>
     </div>
   </div>
 </section>
