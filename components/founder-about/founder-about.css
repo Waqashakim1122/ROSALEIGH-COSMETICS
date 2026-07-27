@@ -1,9 +1,0 @@
-/* FOUNDER component (used on Home + About) */
-.founder-wrap{display:grid;grid-template-columns:0.85fr 1fr;gap:80px;align-items:center;}
-.founder-portrait{border-radius:20px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 30px 60px rgba(var(--forest-rgb), 0.14);background:linear-gradient(160deg,var(--gold-light),var(--gold));}
-.founder-portrait img{width:100%;height:100%;object-fit:cover;}
-.founder-quote{font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1.5;color:var(--forest);font-style:italic;margin:20px 0 22px;border-left:3px solid var(--gold);padding-left:22px;}
-.founder-body{font-size:14.5px;color:var(--muted);line-height:1.8;max-width:440px;margin-bottom:20px;}
-.signature{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold);font-style:italic;}
-
-@media(max-width:1024px){ .founder-wrap{grid-template-columns:1fr;gap:40px;} }

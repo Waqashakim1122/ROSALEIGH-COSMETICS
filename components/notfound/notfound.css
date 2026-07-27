@@ -1,5 +1,0 @@
-/* 404 NOT FOUND component */
-.nf-wrap{min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:60px 20px;}
-.nf-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:120px;color:var(--gold);line-height:1;margin-bottom:10px;}
-.nf-wrap h1{margin-bottom:14px;}
-.nf-wrap p{color:var(--muted);margin-bottom:32px;max-width:380px;}
