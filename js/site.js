@@ -157,8 +157,10 @@ document.querySelectorAll('.btn-add').forEach(btn => {
     this.textContent = 'Added ✓';
     this.style.background = 'var(--forest)';
     this.style.color = '#FAF7F2';
-    const bubble = document.querySelector('.cart-bubble');
-    if(bubble) bubble.textContent = parseInt(bubble.textContent||0) + 1;
+    const productId = this.getAttribute('data-product-id');
+    if(productId && window.RosaleighCart){
+      window.RosaleighCart.addToCart(productId, 1);
+    }
     setTimeout(() => { this.textContent = orig; this.style.background=''; this.style.color=''; }, 1800);
   });
 });
