@@ -45,11 +45,20 @@
   --forest-rgb:42,33,64; --ink-rgb:36,27,51; --bg-rgb:250,248,252;
 }
 :root[data-theme="terracotta"]{
-  --bg:#FDF6F0; --surface:#F7E8DB;
-  --forest:#3D2B1F; --forest-light:#55402F;
-  --sage:#B08D6E; --gold:#C1683F; --gold-light:#DB9670;
-  --ink:#2E2016; --muted:#8A6F55; --border:#EDD9C4; --border-light:#F4E6D5;
-  --forest-rgb:61,43,31; --ink-rgb:46,32,22; --bg-rgb:253,246,240;
+  --bg:#F9FAF8; 
+  --surface:#EFF2EC;
+  --forest:#3A4A40; 
+  --forest-light:#4E6153;
+  --sage:#7C9488; 
+  --gold:#B79267; 
+  --gold-light:#D4B78C;
+  --ink:#2E3A33; 
+  --muted:#7E8C82; 
+  --border:#E1E7DC; 
+  --border-light:#EDF1E8;
+  --forest-rgb:58,74,64; 
+  --ink-rgb:46,58,51; 
+  --bg-rgb:249,250,248;
 }
 :root[data-theme="vintage"]{
   --bg:#F3EAD6; --surface:#EADFC2;
