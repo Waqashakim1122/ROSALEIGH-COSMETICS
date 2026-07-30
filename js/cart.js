@@ -76,8 +76,16 @@
 
   function updateHeaderBubble(){
     const count = getCartCount();
+    // FIX: this now explicitly shows/hides the badge every time it runs,
+    // instead of only writing the number. Previously, header.js hid the
+    // badge once on page load if it read "0", and this function only ever
+    // updated textContent — so if that hide ran before this set a real
+    // (>0) count, the badge stayed invisible even with items in the cart.
+    // Making this the single source of truth for both the number and the
+    // visibility removes that load-order dependency entirely.
     document.querySelectorAll('.cart-bubble, .cart-bubble-mobile').forEach(function(el){
       el.textContent = count;
+      el.style.display = count > 0 ? '' : 'none';
     });
   }
 
