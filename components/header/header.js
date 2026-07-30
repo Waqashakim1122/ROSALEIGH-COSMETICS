@@ -6,14 +6,24 @@
   'use strict';
 
   // ==================== CART BADGE ZERO-STATE ====================
-  // A "0" badge on an empty cart looks unfinished, so hide it until there's
-  // at least one item. Re-run this if/when cart state updates dynamically.
-  document.querySelectorAll('.cart-bubble, .cart-bubble-mobile').forEach(function (badge) {
-    const count = parseInt(badge.textContent.trim(), 10);
-    if (!count || count <= 0) {
-      badge.style.display = 'none';
-    }
-  });
+  // FIX: this used to unconditionally hide the badge if it read "0" in the
+  // static HTML, regardless of whether cart.js had already written the
+  // real count. Depending on script load order, that could hide the badge
+  // and leave it hidden forever, since cart.js's old updateHeaderBubble
+  // only touched textContent, never display. cart.js now owns showing/
+  // hiding the badge as part of updateHeaderBubble, so this just calls
+  // into that (falling back to the old one-time behavior only if cart.js
+  // isn't loaded on a given page for some reason).
+  if (window.RosaleighCart && typeof window.RosaleighCart.updateHeaderBubble === 'function') {
+    window.RosaleighCart.updateHeaderBubble();
+  } else {
+    document.querySelectorAll('.cart-bubble, .cart-bubble-mobile').forEach(function (badge) {
+      const count = parseInt(badge.textContent.trim(), 10);
+      if (!count || count <= 0) {
+        badge.style.display = 'none';
+      }
+    });
+  }
 
   // ==================== ACTIVE LINK HIGH-RANKING HIGHLIGHT ====================
   const currentPage = location.pathname.split('/').pop() || 'index.html';
@@ -30,11 +40,50 @@
   // ==================== SCROLL INTERACTION MATRIX ====================
   const siteHeader = document.getElementById('site-header');
   if (siteHeader) {
-    window.addEventListener('scroll', function () {
-      const hasScrolled = window.scrollY > 30;
-      siteHeader.style.boxShadow = hasScrolled
+    // Keep --header-h in sync with the header's real rendered height, since
+    // #site-header.header-hidden (in header.css) hides the header by
+    // translating it up by exactly this custom property's value.
+    function setHeaderHeightVar() {
+      document.documentElement.style.setProperty('--header-h', siteHeader.offsetHeight + 'px');
+    }
+    setHeaderHeightVar();
+    window.addEventListener('resize', setHeaderHeightVar);
+
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    const HIDE_THRESHOLD = 10; // ignores tiny jitter scrolls (trackpads, etc.)
+
+    function updateHeaderOnScroll() {
+      const currentScrollY = window.scrollY;
+      const diff = currentScrollY - lastScrollY;
+
+      // Box-shadow: on once the page has scrolled a little, off at the top.
+      siteHeader.style.boxShadow = currentScrollY > 30
         ? '0 4px 24px rgba(31, 53, 42, 0.08)'
         : 'none';
+
+      // Hide-on-scroll-down / reveal-on-scroll-up, using .header-hidden
+      // from header.css. Never hide while the mobile drawer is open, so
+      // the drawer's own header/close button stays reachable.
+      if (!isDrawerOpen) {
+        if (currentScrollY <= 0) {
+          siteHeader.classList.remove('header-hidden'); // always show at the very top
+        } else if (diff > HIDE_THRESHOLD) {
+          siteHeader.classList.add('header-hidden'); // scrolling down -> hide
+        } else if (diff < -HIDE_THRESHOLD) {
+          siteHeader.classList.remove('header-hidden'); // scrolling up -> show
+        }
+      }
+
+      lastScrollY = currentScrollY;
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(updateHeaderOnScroll);
+        ticking = true;
+      }
     }, { passive: true });
   }
 
@@ -55,6 +104,9 @@
     mobileDrawer.setAttribute('aria-hidden', 'false');
     menuToggle.setAttribute('aria-expanded', 'true');
     document.body.classList.add('drawer-open');
+
+    // Make sure the header is visible (not scrolled-away) while the drawer is open.
+    if (siteHeader) siteHeader.classList.remove('header-hidden');
 
     const firstFocusable = mobileDrawer.querySelector(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
