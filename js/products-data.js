@@ -6,6 +6,9 @@
 
    Add a new product here and it automatically works at
    product.html?id=<key> and can be added to the cart.
+
+   Image paths point to images/shop/ — matches the actual folder
+   on disk (images/products/ doesn't exist).
    ========================================================= */
 window.PRODUCTS = {
   "tallow-balm": {
@@ -15,9 +18,9 @@ window.PRODUCTS = {
     wasPrice: 44.00,
     rating: "4.9",
     reviews: "4,872",
-    image: "images/products/tallow-balm.jpg",
+    image: "images/shop/tallow-balm.jpg",
     thumbs: [
-      "images/products/tallow-balm.jpg",
+      "images/shop/tallow-balm.jpg",
       "https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=800&q=80",
       "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800&q=80"
     ],
@@ -32,9 +35,9 @@ window.PRODUCTS = {
     price: 32.00,
     rating: "5.0",
     reviews: "1,323",
-    image: "images/products/spf50-sunscreen.jpg",
+    image: "images/shop/spf50-sunscreen.jpg",
     thumbs: [
-      "images/products/spf50-sunscreen.jpg",
+      "images/shop/spf50-sunscreen.jpg",
       "https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=800&q=80"
     ],
     description: "A lightweight, reef-safe broad-spectrum SPF 50+ sunscreen lotion in an airless pump bottle. Absorbs quickly with no white cast, hydrates skin, and layers seamlessly under makeup for daily UVA/UVB protection.",
@@ -48,9 +51,9 @@ window.PRODUCTS = {
     price: 42.00,
     rating: "5.0",
     reviews: "967",
-    image: "images/products/pdrn-anti-wrinkle-stick.jpg",
+    image: "images/shop/pdrn-anti-wrinkle-stick.jpg",
     thumbs: [
-      "images/products/pdrn-anti-wrinkle-stick.jpg",
+      "images/shop/pdrn-anti-wrinkle-stick.jpg",
       "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800&q=80"
     ],
     description: "A Korean-innovation twist-up stick combining PDRN (polydeoxyribonucleotide), marine collagen and NAD+ to visibly firm, smooth and renew the skin's surface. Glide directly onto fine lines for targeted, on-the-go anti-aging care.",
@@ -64,8 +67,8 @@ window.PRODUCTS = {
     price: 14.00,
     rating: "4.8",
     reviews: "582",
-    image: "images/products/lip-balm.jpg",
-    thumbs: ["images/products/lip-balm.jpg"],
+    image: "images/shop/lip-balm.jpg",
+    thumbs: ["images/shop/lip-balm.jpg"],
     description: "A nourishing, all-natural lip balm made with shea butter, beeswax and vitamin E to soften and protect dry, chapped lips. Lightweight, non-sticky formula glides on smooth and locks in moisture all day.",
     size: "Plastic tube",
     ingredients: "Shea butter, beeswax, jojoba oil, vitamin E, calendula extract.",
@@ -77,8 +80,8 @@ window.PRODUCTS = {
     price: 18.00,
     rating: "4.8",
     reviews: "734",
-    image: "images/products/deodorant-stick.jpg",
-    thumbs: ["images/products/deodorant-stick.jpg"],
+    image: "images/shop/deodorant-stick.jpg",
+    thumbs: ["images/shop/deodorant-stick.jpg"],
     description: "An aluminum-free deodorant stick that neutralizes odor naturally while keeping underarms fresh all day. Gentle on sensitive skin and free from parabens and baking soda irritation.",
     size: "75g / 2.65 oz twist-up stick",
     ingredients: "Coconut oil, arrowroot powder, magnesium hydroxide, tea tree oil, shea butter.",
@@ -90,8 +93,8 @@ window.PRODUCTS = {
     price: 28.00,
     rating: "4.9",
     reviews: "411",
-    image: "images/products/magnesium-zinc-foot-cream.jpg",
-    thumbs: ["images/products/magnesium-zinc-foot-cream.jpg"],
+    image: "images/shop/magnesium-zinc-foot-cream.jpg",
+    thumbs: ["images/shop/magnesium-zinc-foot-cream.jpg"],
     description: "A deep-relief foot cream infused with magnesium and zinc to soothe tired, achy feet and nourish rough, dry skin. Comes in a leak-proof, aluminum-lid jar that makes it travel-friendly.",
     size: "100ml / 3.38 fl oz",
     ingredients: "Magnesium chloride, zinc oxide, shea butter, peppermint oil, tallow.",
@@ -103,8 +106,8 @@ window.PRODUCTS = {
     price: 30.00,
     rating: "4.7",
     reviews: "298",
-    image: "images/products/clarifying-balm.jpg",
-    thumbs: ["images/products/clarifying-balm.jpg"],
+    image: "images/shop/clarifying-balm.jpg",
+    thumbs: ["images/shop/clarifying-balm.jpg"],
     description: "A gentle clarifying balm formulated to balance oily and combination skin, minimize the look of pores, and reduce excess shine without over-drying. Leak-proof packaging keeps it mess-free on the go.",
     size: "50ml / 1.7 fl oz",
     ingredients: "Tea tree oil, witch hazel, niacinamide, kaolin clay, jojoba oil.",
@@ -116,8 +119,8 @@ window.PRODUCTS = {
     price: 26.00,
     rating: "4.8",
     reviews: "356",
-    image: "images/products/cleansing-balm.jpg",
-    thumbs: ["images/products/cleansing-balm.jpg"],
+    image: "images/shop/cleansing-balm.jpg",
+    thumbs: ["images/shop/cleansing-balm.jpg"],
     description: "A gentle, melt-in cleansing balm that dissolves makeup, sunscreen and daily buildup without stripping the skin's natural moisture barrier. Leak-proof packaging for easy, mess-free use.",
     size: "60ml / 2.02 fl oz",
     ingredients: "Sunflower oil, shea butter, beeswax, chamomile extract, vitamin E.",
