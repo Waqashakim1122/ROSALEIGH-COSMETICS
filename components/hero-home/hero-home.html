@@ -1,31 +1,28 @@
-<section class="hero-banner">
-  <div class="hero-banner-bg">
-    <img class="theme-img" src="images/hero/hero-products-natural.jpg" alt="Rosaleigh skincare products styled with olive branches" loading="eager">
+<section class="hero-banner" aria-label="Featured products slideshow">
+  <div class="hero-slides">
+    <div class="hero-slide is-active">
+      <img class="theme-img" src="images/hero/hero-products-natural.jpg" alt="Rosaleigh skincare products styled with olive branches">
+    </div>
+    <div class="hero-slide">
+      <img class="theme-img" src="images/hero/hero-slide-2.jpg" alt="Rosaleigh skincare product close-up">
+    </div>
+    <div class="hero-slide">
+      <img class="theme-img" src="images/hero/hero-slide-3.jpg" alt="Rosaleigh skincare product close-up">
+    </div>
+    <div class="hero-slide">
+      <img class="theme-img" src="images/hero/hero-slide-4.jpg" alt="Rosaleigh skincare product close-up">
+    </div>
   </div>
-  <div class="hero-glass" aria-hidden="true"></div>
 
-  <div class="hero-copy">
-    <div class="hero-badge"><span class="hb-stars">★★★★★</span> 4.9 · Loved by 100,000+ Customers</div>
-    <p class="eyebrow">Barrier-First Skincare</p>
-    <h1 class="hero-title">Nourish. Protect.<br>Glow <em>naturally.</em></h1>
-    <p class="hero-sub">Premium skincare infused with nature's finest ingredients for radiant, healthy skin.</p>
-    <div class="btn-row">
-      <a href="shop.html"><button class="btn-primary">Discover the Collection</button></a>
-      <a href="about.html#ingredients" class="hero-explore-link">Explore the Ingredients →</a>
-    </div>
-    <div class="hero-features">
-      <div class="hf-item">
-        <span class="hf-icon">💧</span>
-        <div class="hf-text">Hydration<span>72hr barrier support</span></div>
-      </div>
-      <div class="hf-item">
-        <span class="hf-icon">🛡</span>
-        <div class="hf-text">Protection<span>SPF-safe formulas</span></div>
-      </div>
-      <div class="hf-item">
-        <span class="hf-icon">🌿</span>
-        <div class="hf-text">Clean &amp; Natural<span>Sensitive-skin safe</span></div>
-      </div>
-    </div>
+  <button class="hero-arrow hero-arrow-prev" type="button" aria-label="Previous slide">&#10094;</button>
+  <button class="hero-arrow hero-arrow-next" type="button" aria-label="Next slide">&#10095;</button>
+
+  <div class="hero-dots" role="tablist" aria-label="Slide navigation">
+    <button class="hero-dot is-active" type="button" role="tab" aria-selected="true" aria-label="Go to slide 1"></button>
+    <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Go to slide 2"></button>
+    <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Go to slide 3"></button>
+    <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Go to slide 4"></button>
   </div>
 </section>
+
+<script src="hero-slideshow.js" defer></script>
