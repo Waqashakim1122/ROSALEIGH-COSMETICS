@@ -1,12 +1,17 @@
 /* ============================================================
-   INGREDIENT SPOTLIGHT component (shared look, used on Home + About)
-   Sits on the site's own cream/surface tone — same palette as
-   the rest of the page, not a dark drop-in panel.
+   INGREDIENT SPOTLIGHT — Apothecary Dossier (v7)
+   4-photo collage. Each photo has a clickable tag marker
+   (transparent glass circle) instead of a static text label.
+   Pair with ingredient-spotlight.html + ingredient-spotlight.js
 
-   Signature element: a single quiet "origin tag" chip anchored
-   to the photo, echoing the wax-seal provenance idea without
-   the drip / spin / sparkle-text treatment. Restraint is the
-   point — one accent, everything else stays disciplined.
+   v7 changelog:
+   - Mobile: content now comes BEFORE the image collage.
+   - Mobile: specimen-tag no longer overlaps the photo (it sat
+     awkwardly close to the collage tiles on narrow screens);
+     it's now a plain caption strip directly under the image.
+   - Mobile (<=640px): tag-note popups no longer anchor to the
+     dot (they could clip at the screen edge). They now appear
+     as a centered bottom-sheet card with a dim backdrop.
 
    Requires these tokens defined on :root or a parent scope —
    already in your site's global stylesheet, listed here for
@@ -18,222 +23,264 @@
    ============================================================ */
 
 .ingredient-spotlight,
-.ingredient-spotlight *{
-  box-sizing:border-box;
-}
-.ingredient-spotlight svg{
-  display:block;
-  max-width:none;
-}
-.ingredient-spotlight img{
-  max-width:100%;
-  height:auto;
-}
-
-.ingredient-spotlight{
-  position:relative;
-  background:var(--bg);
-  padding-block:clamp(56px, 8vw, 96px);
-}
+.ingredient-spotlight *{box-sizing:border-box;}
+.ingredient-spotlight svg{display:block;}
+.ingredient-spotlight{position:relative;background:var(--bg);padding-block:clamp(56px,9vw,108px);}
 
 .ingredient-wrap{
   position:relative;
   display:grid;
-  grid-template-columns:0.88fr 1.12fr;
-  gap:clamp(36px, 6vw, 72px);
+  grid-template-columns:0.82fr 1.18fr;
+  gap:clamp(40px,6vw,84px);
   align-items:center;
+  max-width:1240px;
+  margin-inline:auto;
+  padding-inline:clamp(20px,4vw,48px);
 }
 
-/* ---------- content ---------- */
-.ingredient-content{max-width:460px;}
-
-.ingredient-content .eyebrow{
-  display:flex;align-items:center;gap:10px;
-  margin:0;
-  color:var(--sage);
-  font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-}
-.ingredient-content .eyebrow::before{content:'';width:28px;height:1px;background:var(--gold);display:inline-block;}
+/* ---------- left content ---------- */
+.ingredient-content{max-width:440px;padding-top:8px;}
+.ingredient-content .eyebrow{display:flex;align-items:center;gap:10px;margin:0;color:var(--sage);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;}
+.ingredient-content .eyebrow::before{content:'';width:28px;height:1px;background:var(--gold);display:inline-block;flex:none;}
 
 .ingredient-content h2{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:500;
-  font-size:clamp(38px, 4.4vw, 54px);
-  line-height:1.04;
-  letter-spacing:-.01em;
-  margin:16px 0 22px;
-  color:var(--forest);
+  font-family:'Cormorant Garamond',serif;font-weight:500;
+  font-size:clamp(38px,4.6vw,58px);line-height:1.03;letter-spacing:-.01em;
+  margin:18px 0 22px;color:var(--forest);
+  word-wrap:break-word;
 }
-.ingredient-content h2 em{
-  color:var(--gold);
-  font-style:italic;
-  font-weight:400;
-}
+.ingredient-content h2 em{color:var(--gold);font-style:italic;font-weight:400;}
 
-.ingredient-content .desc{
-  font-size:14.5px;
-  color:var(--muted);
-  max-width:400px;
-  margin:0 0 36px;
-  line-height:1.8;
-}
+.ingredient-content .desc{font-size:14.5px;color:var(--muted);max-width:400px;margin:0 0 28px;line-height:1.8;}
 
-/* ---------- vitamin rows ----------
-   Each row reveals its function on hover/focus via a sliding
-   gold underline + gentle indent — small, quiet motion instead
-   of a static list. */
-.ingredient-list{list-style:none;margin:0 0 34px;padding:0;}
-.ingredient-list li{
-  position:relative;
-  display:flex;align-items:center;gap:18px;
-  padding:14px 4px;
-  border-bottom:1px solid var(--border);
-  transition:padding-left .35s cubic-bezier(.22,.61,.36,1);
+.provenance-line{
+  display:flex;gap:12px;margin:0 0 34px;padding:16px 0 0;border-top:1px solid var(--border);
 }
-.ingredient-list li:first-child{border-top:1px solid var(--border);}
-.ingredient-list li::after{
-  content:'';
-  position:absolute; left:0; bottom:-1px;
-  width:0; height:1px;
-  background:var(--gold);
-  transition:width .4s cubic-bezier(.22,.61,.36,1);
-}
-.ingredient-list li:hover,
-.ingredient-list li:focus-within{padding-left:10px;}
-.ingredient-list li:hover::after,
-.ingredient-list li:focus-within::after{width:100%;}
-
-.il-badge{
-  width:38px;height:38px;flex:none;
-  border-radius:50%;
-  border:1px solid var(--border);
-  color:var(--gold);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Cormorant Garamond',serif;
-  font-size:15px;font-weight:600;
-  transition:background .35s ease, color .35s ease, border-color .35s ease;
-}
-.ingredient-list li:hover .il-badge,
-.ingredient-list li:focus-within .il-badge{
-  background:var(--gold);
-  border-color:var(--gold);
-  color:#fff;
-}
-.il-badge-cfa svg{width:18px;height:18px;}
-
-.il-copy{display:flex;flex-direction:column;gap:2px;}
-.il-name{
-  font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-  color:var(--forest);
-}
-.il-benefit{font-size:13px;color:var(--muted);}
+.provenance-line svg{width:16px;height:16px;flex:none;color:var(--gold);margin-top:1px;}
+.provenance-line p{margin:0;font-size:12.5px;line-height:1.6;color:var(--muted);}
+.provenance-line strong{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--forest);margin-bottom:3px;}
 
 .ing-explore-link{
-  display:inline-flex;align-items:center;gap:9px;
-  font-size:13px;font-weight:600;letter-spacing:.02em;
-  color:var(--forest);text-decoration:none;
-  border-bottom:1px solid var(--border);
-  padding-bottom:3px;
+  display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:600;letter-spacing:.02em;
+  color:var(--forest);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:3px;
   transition:border-color .25s ease, gap .25s ease, color .25s ease;
 }
-.ing-explore-link svg{width:14px;height:14px;transition:transform .25s ease;}
+.ing-explore-link svg{width:14px;height:14px;flex:none;transition:transform .25s ease;}
 .ing-explore-link:hover{border-color:var(--gold);color:var(--gold);gap:13px;}
-.ing-explore-link:hover svg{transform:translateX(2px);}
-.ing-explore-link:focus-visible{outline:2px solid var(--gold);outline-offset:4px;}
+.ing-explore-link:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:2px;}
 
-/* ---------- image ---------- */
-.ingredient-collage{position:relative;}
-
-.ingredient-img{
-  position:relative;
-  border-radius:14px;
-  overflow:hidden;
-  aspect-ratio:4/5;
-  box-shadow:0 16px 32px -22px rgba(46,36,29,.28);
+.trust-row{
+  display:flex;flex-wrap:wrap;gap:10px;
+  margin-top:32px;padding-top:24px;border-top:1px solid var(--border);
 }
-.ingredient-img img{
-  width:100%;height:100%;object-fit:cover;display:block;
+.trust-row span{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--forest-light);
+  background:var(--surface);border:1px solid var(--border);border-radius:100px;
+  padding:6px 12px;white-space:nowrap;
+}
+.trust-row span svg{width:12px;height:12px;color:var(--gold);flex:none;}
+
+/* ---------- right: collage ---------- */
+.ingredient-visual{
+  display:block;
+}
+
+.ingredient-collage{
+  position:relative;
+  width:100%;
+}
+
+/* collage-stack groups the photo grid + pinned specimen tag so
+   the tag's absolute position is scoped to THIS box only — it
+   can no longer drift down and collide with the info panel that
+   opens below, regardless of how tall the panel grows. */
+.collage-stack{
+  position:relative;
+}
+
+.collage-grid{
+  display:grid;
+  grid-template-columns:1.7fr 1fr;
+  grid-template-rows:repeat(3, 1fr);
+  gap:12px;
+  height:clamp(520px, 54vw, 680px);
+}
+
+.collage-photo{
+  position:relative;border-radius:14px;
+  background:var(--surface);
+  box-shadow:0 1px 2px rgba(46,36,29,.06);
+}
+.collage-photo img{
+  width:100%;height:100%;object-fit:cover;display:block;border-radius:14px;
   transition:transform 1s cubic-bezier(.22,.61,.36,1);
 }
-.ingredient-collage:hover .ingredient-img img{transform:scale(1.03);}
+.collage-photo:hover img{transform:scale(1.04);}
 
-/* origin tag — the single accent on the photo. A flat, legible
-   chip, not a medallion; states its claim once and stops. */
-.origin-tag{
-  position:absolute; left:16px; bottom:16px;
-  display:inline-flex; align-items:center; gap:7px;
-  background:rgba(250,247,242,.94);
-  color:var(--forest);
-  padding:8px 14px 8px 11px;
-  border-radius:100px;
-  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
-  box-shadow:0 6px 16px rgba(46,36,29,.18);
+.collage-photo.is-hero{grid-column:1;grid-row:1 / span 3;}
+.collage-photo.is-support{grid-column:2;grid-row:auto;overflow:hidden;}
+
+.collage-photo.is-hero::after{
+  content:'';position:absolute;inset:auto 0 0 0;height:44%;
+  background:linear-gradient(to top, rgba(31,53,42,.42), rgba(31,53,42,0));
+  pointer-events:none;z-index:1;
 }
-.origin-tag svg{width:14px;height:14px;flex:none;color:var(--gold);}
+.collage-photo.is-support:not(.is-pending)::after{
+  content:'';position:absolute;inset:auto 0 0 0;height:38%;
+  background:linear-gradient(to top, rgba(31,53,42,.4), rgba(31,53,42,0));
+  pointer-events:none;z-index:1;
+}
 
-/* editorial caption beneath the frame — small provenance detail,
-   set like a photo credit */
-.collage-caption{
-  display:flex; align-items:center; gap:8px;
-  margin:18px 0 0 4px;
-  font-size:11.5px;
+/* ---------- pending-photo placeholder state ---------- */
+.collage-photo.is-pending{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  padding:16px;text-align:center;
+  border:1px dashed var(--border);
+  background:
+    repeating-linear-gradient(135deg, rgba(31,53,42,.03) 0 10px, transparent 10px 20px),
+    var(--surface);
+}
+.collage-photo.is-pending svg{width:34px;height:34px;color:var(--sage);opacity:.55;}
+.collage-photo.is-pending span{
+  font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--muted);line-height:1.4;
+}
+.collage-photo.is-pending .img-tag-ring{background:rgba(245,239,231,.9);border-color:rgba(107,95,82,.35);}
+.collage-photo.is-pending .img-tag-ring::before{background:var(--forest-light);}
+.collage-photo.is-pending .img-tag:hover .img-tag-ring,
+.collage-photo.is-pending .img-tag[aria-expanded="true"] .img-tag-ring{background:var(--bg);}
+
+/* ---------- clickable tag marker on each photo ---------- */
+.img-tag{
+  position:absolute;width:34px;height:34px;z-index:3;
+  display:flex;align-items:center;justify-content:center;
+  background:none;border:none;padding:0;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  filter:drop-shadow(0 2px 8px rgba(0,0,0,.25));
+}
+.img-tag-ring{
+  position:relative;width:100%;height:100%;border-radius:50%;
+  background:rgba(255,255,255,.22);
+  border:1.5px solid rgba(255,255,255,.85);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s ease, transform .2s ease, border-color .2s ease;
+}
+.img-tag-ring svg{width:14px;height:14px;color:#fff;flex:none;transition:transform .2s ease;}
+.img-tag::after{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  border:1px solid rgba(255,255,255,.65);
+  animation:tag-pulse 2.4s ease-out infinite;
+}
+.img-tag:hover .img-tag-ring,
+.img-tag[aria-expanded="true"] .img-tag-ring{background:rgba(183,154,90,.95);border-color:#fff;transform:scale(1.08);}
+.img-tag[aria-expanded="true"] .img-tag-ring svg{transform:rotate(45deg);}
+.img-tag:focus-visible{outline:none;}
+.img-tag:focus-visible .img-tag-ring{outline:2px solid var(--gold-light);outline-offset:3px;}
+@keyframes tag-pulse{
+  0%{transform:scale(.75);opacity:.7;}
+  70%{transform:scale(1.6);opacity:0;}
+  100%{opacity:0;}
+}
+
+/* ---------- desktop/tablet tag-note popup (anchored bubble) ---------- */
+.tag-note{
+  position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(4px);
+  width:184px;max-width:calc(50vw - 24px);background:var(--bg);border:1px solid var(--border);border-radius:10px;
+  padding:11px 13px;box-shadow:0 12px 26px rgba(46,36,29,.18);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .18s ease, transform .18s ease, visibility .18s;
+  z-index:6;
+}
+.tag-note .tn-index{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--gold);text-transform:uppercase;}
+.tag-note h4{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+  font-size:16px;color:var(--forest);margin:3px 0 5px;
+}
+.tag-note p{font-size:11.5px;line-height:1.5;color:var(--muted);margin:0;}
+.img-tag[aria-expanded="true"] .tag-note{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+
+/* ---------- tag-note (hidden — content is now read by JS and
+   shown in the single .tag-info-panel below instead) ---------- */
+.tag-note{display:none;}
+
+/* ---------- single sliding info panel, always in normal flow.
+   Scoped after .collage-stack so it opens cleanly below the
+   photo grid with no other elements to collide with. ---------- */
+.tag-info-panel{
+  position:relative;
+  overflow:hidden;
+  max-height:0;
+  opacity:0;
+  margin-top:0;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--bg);
+  box-shadow:0 8px 24px -12px rgba(46,36,29,.18);
+  transition:max-height .35s ease, opacity .3s ease, margin-top .35s ease;
+}
+.tag-info-panel.is-open{
+  max-height:240px;
+  opacity:1;
+  margin-top:20px;
+}
+.tag-info-panel-inner{
+  padding:18px 44px 18px 18px;
+}
+.tag-info-text h4{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+  font-size:18px;color:var(--forest);margin:0 0 6px;
+}
+.tag-info-text p{font-size:13px;line-height:1.6;color:var(--muted);margin:0;}
+
+.tag-info-close{
+  position:absolute;top:12px;right:12px;
+  width:26px;height:26px;
+  border:none;border-radius:50%;
+  background:var(--surface);
   color:var(--muted);
-  letter-spacing:.03em;
-  font-style:italic;
+  font-size:14px;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  transition:background .2s ease, color .2s ease;
 }
-.collage-caption::before{content:'';width:14px;height:1px;background:var(--gold);display:inline-block;}
+.tag-info-close:hover{background:var(--gold);color:#fff;}
+.tag-info-close:focus-visible{outline:2px solid var(--gold-light);outline-offset:2px;}
 
 /* ---------- responsive ---------- */
+@media(max-width:1180px){
+  .ingredient-wrap{grid-template-columns:0.9fr 1.1fr;gap:clamp(32px,5vw,60px);}
+}
 
-/* Tablet: stack to one column, photo first so the visual leads,
-   text follows. Keep generous but slightly reduced spacing. */
 @media(max-width:1024px){
-  .ingredient-wrap{
-    grid-template-columns:1fr;
-    gap:40px;
-  }
-  .ingredient-content{max-width:100%;order:2;}
-  .ingredient-collage{order:1;}
-  .ingredient-img{aspect-ratio:16/10;}
+  .ingredient-wrap{grid-template-columns:1fr;gap:44px;}
+  /* content first, image collage second on mobile/tablet */
+  .ingredient-content{max-width:100%;order:1;}
+  .ingredient-visual{order:2;}
+  .collage-grid{height:clamp(460px, 70vw, 600px);}
+  .ingredient-collage{margin-bottom:0;}
 }
 
-/* Small tablet / large phone: tighten type scale and list rows */
 @media(max-width:768px){
-  .ingredient-content h2{margin:12px 0 16px;}
-  .ingredient-content .desc{margin-bottom:28px;}
-  .ingredient-list li{padding:12px 2px;gap:14px;}
-  .il-badge{width:34px;height:34px;font-size:14px;}
-  .il-badge-cfa svg{width:16px;height:16px;}
-  .il-name{font-size:11px;}
-  .il-benefit{font-size:12.5px;}
+  .ingredient-content h2{margin:14px 0 18px;}
 }
 
-/* Phone: single-column full-bleed content, image reverts to a
-   taller crop, origin tag shrinks so it never crowds the corner */
-@media(max-width:560px){
+@media(max-width:640px){
   .ingredient-content .desc{max-width:100%;}
-  .ingredient-img{aspect-ratio:4/5;border-radius:12px;}
-  .origin-tag{
-    font-size:10px;
-    padding:6px 11px 6px 8px;
-    gap:6px;
-    left:12px; bottom:12px;
-  }
-  .origin-tag svg{width:12px;height:12px;}
-  .collage-caption{font-size:11px;margin-top:14px;}
-}
 
-/* Very small phones: prevent the vitamin rows from feeling cramped
-   by dropping the hover indent (touch devices don't hover anyway) */
-@media(max-width:380px){
-  .ingredient-list li:hover,
-  .ingredient-list li:focus-within{padding-left:2px;}
-  .ing-explore-link{font-size:12.5px;}
+  .collage-grid{
+    grid-template-columns:repeat(3, 1fr);
+    grid-template-rows:auto auto;
+    height:auto;gap:8px;
+  }
+  .collage-photo.is-hero{grid-column:1 / -1;grid-row:1;aspect-ratio:4/3;}
+  .collage-photo.is-support{grid-column:auto;grid-row:2;aspect-ratio:1/1;}
+
+  .trust-row span{padding:6px 10px;font-size:10.5px;}
 }
 
 @media(prefers-reduced-motion:reduce){
-  .ingredient-list li,
-  .ing-explore-link,
-  .ing-explore-link svg,
-  .ingredient-img img{transition:none;}
+  .ing-explore-link, .ing-explore-link svg, .collage-photo img, .tag-note, .img-tag-ring, .tag-backdrop{transition:none;}
+  .img-tag::after{animation:none;}
 }
