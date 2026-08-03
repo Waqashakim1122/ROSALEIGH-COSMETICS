@@ -1,0 +1,89 @@
+/* ============================================================
+   CLEAN PROMISE — asymmetric split (photo + list), replaces
+   the old 3-identical-centered-cards layout so this section
+   doesn't repeat the same pattern as Benefits/FAQ above/below it.
+   ============================================================ */
+.ing-promise-split{
+  background:var(--surface);
+  padding-block:clamp(64px,9vw,120px);
+}
+.ips-wrap{
+  display:grid;
+  grid-template-columns:0.85fr 1.15fr;
+  gap:clamp(40px,6vw,80px);
+  align-items:center;
+}
+
+.ips-photo{
+  position:relative;
+  border-radius:var(--radius);
+  overflow:hidden;
+  aspect-ratio:4/5;
+  box-shadow:0 30px 60px -20px rgba(var(--forest-rgb),.22);
+}
+.ips-photo img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s cubic-bezier(.2,.8,.2,1);
+}
+.ing-promise-split:hover .ips-photo img{ transform:scale(1.06); }
+.ips-photo::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(var(--forest-rgb),0) 60%, rgba(var(--forest-rgb),.35) 100%);
+  pointer-events:none;
+}
+
+.ips-content .eyebrow{ margin-bottom:14px; display:block; }
+.ips-content h2{
+  font-size:clamp(32px,4vw,44px);
+  line-height:1.08;
+  margin-bottom:0;
+}
+/* gold rule under the heading — left-aligned here since this
+   section keeps its asymmetric split layout, unlike the
+   centered .rule used in Spotlight/FAQ/Why Rosaleigh */
+.ips-content .rule{
+  margin:16px 0 24px;
+}
+.ips-lede{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.7;
+  max-width:440px;
+  margin-bottom:36px;
+  padding-bottom:28px;
+  border-bottom:1px solid var(--border);
+}
+
+.ips-list{ list-style:none; display:flex; flex-direction:column; gap:26px; }
+.ips-item{
+  display:flex; align-items:flex-start; gap:18px;
+}
+.ips-x{
+  flex:none;
+  width:36px;height:36px;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:700;
+  color:#B5544A;
+  background:rgba(181,84,74,.08);
+  border:1px solid rgba(181,84,74,.2);
+  transition:transform .3s ease, background-color .3s ease;
+}
+.ips-item:hover .ips-x{
+  transform:scale(1.12) rotate(-8deg);
+  background:rgba(181,84,74,.14);
+}
+.ips-item h4{ font-size:18px; margin-bottom:5px; }
+.ips-item p{ color:var(--muted); font-size:13.5px; line-height:1.7; max-width:400px; }
+
+@media(max-width:1024px){
+  .ips-wrap{ grid-template-columns:1fr; }
+  .ips-photo{ aspect-ratio:16/9; order:-1; }
+}
+@media(max-width:640px){
+  .ips-lede{ max-width:100%; }
+  .ips-item p{ max-width:100%; }
+}
+@media(prefers-reduced-motion:reduce){
+  .ips-photo img, .ips-x{ transition:none; }
+}

@@ -1,0 +1,105 @@
+/* ============================================================
+   INGREDIENT BENEFITS — v5, centered head (matches Why Rosaleigh's
+   rhythm) + bold color-block stat pull-out below. The centered
+   eyebrow/h2/rule up top keeps this section consistent with the
+   rest of the page; the stat number + checklist grid below is
+   still this section's own signature device, distinct from Why
+   Rosaleigh's roman-numeral grid.
+   ============================================================ */
+.ing-benefits{
+  background:var(--forest);
+  padding-block:clamp(64px,9vw,120px);
+  position:relative;
+  overflow:hidden;
+}
+/* soft radial glow, subtle, keeps the block from feeling flat */
+.ing-benefits::before{
+  content:'';
+  position:absolute;
+  top:-20%; right:-10%;
+  width:60%; height:140%;
+  background:radial-gradient(circle, rgba(var(--forest-rgb),0) 0%, rgba(255,255,255,.03) 40%, transparent 70%);
+  pointer-events:none;
+}
+
+/* centered head — matches Why Rosaleigh's pattern exactly */
+.ib-head{ position:relative; z-index:1; }
+.ib-head h2{ font-size:clamp(32px,4vw,46px); line-height:1.08; }
+
+.ib-wrap{
+  position:relative; z-index:1;
+  display:grid;
+  grid-template-columns:0.7fr 1.3fr;
+  gap:clamp(40px,6vw,80px);
+  align-items:start;
+}
+
+.ib-stat{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:24px 0;
+  border-top:1px solid rgba(255,255,255,.14);
+  border-bottom:1px solid rgba(255,255,255,.14);
+  margin-bottom:24px;
+}
+.ib-stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(64px,7vw,88px);
+  line-height:1;
+  color:var(--gold-light);
+  font-weight:500;
+}
+.ib-stat-label{
+  color:rgba(250,247,242,.75);
+  font-size:13px;
+  line-height:1.5;
+  max-width:180px;
+}
+
+.ib-lede{
+  color:rgba(250,247,242,.65);
+  font-size:14px;
+  line-height:1.75;
+  max-width:400px;
+}
+
+.ib-list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  column-gap:48px;
+}
+
+.ing-fact{
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+  padding:20px 0;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.ing-fact:nth-child(5), .ing-fact:nth-child(6){ border-bottom:none; }
+
+.ing-fact-check{
+  flex:none;
+  width:22px;height:22px;margin-top:2px;
+  color:var(--gold-light);
+  transition:transform .3s ease;
+}
+.ing-fact-check svg{ width:100%; height:100%; }
+.ing-fact:hover .ing-fact-check{ transform:scale(1.15); }
+
+.ing-fact h4{ color:var(--bg); font-size:17px; margin-bottom:5px; font-weight:500; }
+.ing-fact p{ color:rgba(250,247,242,.6); font-size:13px; line-height:1.7; max-width:320px; }
+
+@media(max-width:1024px){
+  .ib-wrap{ grid-template-columns:1fr; }
+  .ib-stat-label{ max-width:100%; }
+}
+@media(max-width:640px){
+  .ib-list{ grid-template-columns:1fr; column-gap:0; }
+  .ing-fact{ border-bottom:1px solid rgba(255,255,255,.12) !important; }
+  .ing-fact:last-child{ border-bottom:none !important; }
+}
+@media(prefers-reduced-motion:reduce){
+  .ing-fact-check{ transition:none; }
+}

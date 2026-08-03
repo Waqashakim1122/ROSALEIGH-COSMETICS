@@ -1,0 +1,84 @@
+/* ============================================================
+   INGREDIENTS FAQ — redesigned as numbered accent-bordered
+   rows instead of default flat <details> styling, so this
+   section reads as designed rather than a bare browser default.
+   Still native <details>/<summary> — no JS required.
+   ============================================================ */
+.ing-faq{ counter-reset:ing-faq-counter; }
+
+.ing-faq-item{
+  counter-increment:ing-faq-counter;
+  position:relative;
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-left:3px solid var(--border);
+  border-radius:10px;
+  margin-bottom:14px;
+  padding-left:8px;
+  transition:border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+}
+.ing-faq-item:hover{
+  border-left-color:var(--gold);
+  box-shadow:0 14px 32px -18px rgba(var(--forest-rgb),.22);
+  transform:translateY(-2px);
+}
+.ing-faq-item[open]{
+  border-left-color:var(--gold);
+}
+
+.ing-faq-item summary{
+  list-style:none;
+  cursor:pointer;
+  padding:20px 44px 20px 34px;
+  position:relative;
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px;
+  color:var(--forest);
+  font-weight:500;
+}
+.ing-faq-item summary::-webkit-details-marker{ display:none; }
+
+/* numbered index, replaces the plain bullet-less row with a
+   small brand-colored counter so each question feels catalogued */
+.ing-faq-item summary::before{
+  content:counter(ing-faq-counter, decimal-leading-zero);
+  position:absolute;
+  left:0; top:20px;
+  font-family:'Manrope',sans-serif;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.05em;
+  color:var(--gold);
+  opacity:.8;
+}
+
+.ing-faq-item summary::after{
+  content:'+';
+  position:absolute;
+  right:18px;top:16px;
+  font-family:'Manrope',sans-serif;
+  font-size:22px;
+  font-weight:300;
+  color:var(--gold);
+  transition:transform .3s ease;
+}
+.ing-faq-item[open] summary::after{ content:'−'; transform:rotate(180deg); }
+
+.ing-faq-item p{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.75;
+  padding:0 24px 22px 34px;
+  max-width:640px;
+}
+
+@media(max-width:640px){
+  .ing-faq-item summary{ font-size:16.5px; padding:16px 40px 16px 30px; }
+  .ing-faq-item summary::before{ top:16px; }
+  .ing-faq-item summary::after{ top:13px; }
+  .ing-faq-item p{ padding:0 20px 18px 30px; }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .ing-faq-item, .ing-faq-item summary::after{ transition:none; }
+}
