@@ -1,66 +1,144 @@
-.founder-wrap{display:grid;grid-template-columns:0.85fr 1fr;gap:80px;align-items:center;}
+/* ============================================================
+   FOUNDER — editorial photo + copy
+   Photo is mounted directly (no padded "mat" box — removed per
+   feedback: it was reading as an unexplained white box behind
+   the image rather than an intentional framing device).
+   A real circular wax-seal (SVG textPath), drop cap, script
+   signature. Layout is width-capped so the copy column can't
+   stretch into empty space on wide viewports.
 
-/* No-photo visual panel — a deliberate editorial block, not a
-   placeholder waiting to be filled. Swap for .founder-portrait
-   (real <img>) once a photo exists; nothing else needs to change. */
-.founder-visual{
+   Spacing scale: 4 / 8 / 12 / 16 / 20 / 24 / 32 / 48
+   ============================================================ */
+
+.founder-editorial{overflow-x:hidden;}
+
+/* Wrap now has its own max-width instead of inheriting the full
+   section container width. This is the fix for the large empty
+   gap on the right: previously the copy column was set to 1fr
+   (fill whatever space is left), while the text inside it was
+   capped at ~460px — so on a wide container the column kept
+   stretching and left dead space past the text. Capping the
+   wrap keeps both columns close and proportionate no matter how
+   wide the outer section is. */
+.founder-ed-wrap{
+  display:grid;
+  grid-template-columns:440px minmax(0,520px);
+  gap:64px;
+  align-items:start;
+  max-width:1040px;
+}
+
+/* ---- Media: photo, mounted directly ---- */
+.founder-ed-media{max-width:100%;}
+
+.founder-ed-photo{
   position:relative;
-  border-radius:20px;
-  aspect-ratio:3/4;
+  z-index:1;
+  aspect-ratio:4/5; /* slightly less tall than the old 3/4, so the photo's
+                        height sits closer to the copy block's natural
+                        height instead of towering over it */
+  border-radius:14px;
+  overflow:hidden;
+  background:var(--surface);
+  border:1px solid var(--border-light);
+  box-shadow:0 24px 40px -20px rgba(var(--forest-rgb), 0.2);
+}
+.founder-ed-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.founder-ed-photo.no-photo{
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;
   background:linear-gradient(165deg, var(--forest) 0%, #2a4438 100%);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:22px;
-  box-shadow:0 30px 60px rgba(var(--forest-rgb), 0.18);
 }
-.founder-monogram{
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;
-  font-weight:500;
-  font-size:96px;
-  color:var(--gold-light);
-  line-height:1;
-}
-.founder-visual-rule{width:36px;height:1px;background:rgba(255,255,255,0.25);}
-.founder-visual-label{
-  font-size:11px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,0.55);
-  font-weight:700;
+.founder-ed-photo.no-photo::after{
+  content:'Add founder-portrait.jpg to /images/about/';
+  color:rgba(255,255,255,0.55);font-size:11px;letter-spacing:0.04em;font-family:'Manrope',sans-serif;
 }
 
-.founder-quote{
+/* Seal sits on the photo itself now (no mat to anchor to) —
+   pulled slightly inset from the corner so it reads as a stamp
+   on the print, not a badge clipped by the edge. */
+.founder-ed-seal{
+  position:absolute;
+  right:16px;
+  bottom:16px;
+  width:92px;
+  height:92px;
+  z-index:2;
+  filter:drop-shadow(0 8px 16px rgba(0,0,0,0.28));
+}
+.founder-ed-seal svg{width:100%;height:100%;}
+.seal-fill{fill:url(#sealGradient);}
+.seal-ring-outer{fill:none;stroke:var(--gold-light);stroke-width:1;opacity:0.6;}
+.seal-ring-inner{fill:none;stroke:var(--gold-light);stroke-width:0.75;opacity:0.45;}
+.seal-text-top{font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.8px;fill:var(--gold-light);}
+.seal-mark{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;fill:#fff;}
+
+/* ---- Copy ---- */
+
+.founder-ed-copy h2{font-size:37px;line-height:1.22;margin-top:12px;max-width:480px;}
+.founder-ed-copy h2 em{font-style:italic;color:var(--gold);}
+
+.founder-ed-rule{width:44px;height:1.5px;background:var(--gold);margin:20px 0;}
+
+.founder-ed-quote{
   font-family:'Cormorant Garamond',serif;
-  font-size:24px;
-  line-height:1.5;
+  font-size:20px;
+  line-height:1.6;
+  font-style:italic;
   color:var(--forest);
-  font-style:italic;
-  margin:20px 0 22px;
-  border-left:3px solid var(--gold);
-  padding-left:22px;
+  max-width:460px;
+  margin-bottom:24px;
 }
-.founder-wrap h2{font-size:32px;margin-top:10px;margin-bottom:22px;max-width:420px;}
-.founder-body{font-size:14.5px;color:var(--muted);line-height:1.8;max-width:440px;margin-bottom:28px;}
 
-.founder-sign-row{
-  display:flex;align-items:center;gap:16px;
-  padding-top:22px;border-top:1px solid var(--border);
-  max-width:440px;
+.founder-ed-body{font-size:14.5px;color:var(--muted);line-height:1.85;max-width:440px;margin-bottom:24px;}
+.dropcap{
+  float:left;
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;
+  font-size:52px;
+  line-height:0.78;
+  color:var(--gold);
+  padding-right:8px;
+  padding-top:4px;
 }
-.founder-sign-mark{
-  flex:0 0 auto;width:44px;height:44px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:#fff;
-  background:linear-gradient(160deg,var(--gold-light),var(--gold));
-}
-.founder-signature{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--forest);margin:0;}
-.founder-role{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--sage);font-weight:700;margin-top:2px;}
 
-.founder-cta{margin-top:24px;}
+.founder-ed-sign{margin-top:0;margin-bottom:24px;border-top:1px solid var(--border);padding-top:0;}
+.founder-ed-signature{font-family:'Mrs Saint Delafield',cursive;font-size:36px;line-height:1;color:var(--forest);margin:16px 0 4px;}
+.founder-ed-role{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--sage);font-weight:700;}
+
 .link-arrow{display:inline-block;font-size:13px;font-weight:600;color:var(--forest);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px;transition:color .2s ease;}
 .link-arrow:hover{color:var(--gold);}
+.link-arrow .arrow{display:inline-block;transition:transform .25s ease;}
+.link-arrow:hover .arrow{transform:translateX(4px);}
 
-@media(max-width:1024px){ .founder-wrap{grid-template-columns:1fr;gap:40px;} }
+@media(max-width:1024px){
+  .founder-ed-wrap{grid-template-columns:1fr;gap:48px;max-width:520px;margin:0 auto;}
+  .founder-ed-media{max-width:400px;margin:0 auto;}
+  .founder-ed-copy h2,.founder-ed-quote,.founder-ed-body,.founder-ed-sign{max-width:100%;}
+  .founder-ed-copy{text-align:left;}
+}
+
+@media(max-width:640px){
+  .founder-ed-wrap{gap:32px;}
+  .founder-ed-media{max-width:300px;}
+  .founder-ed-photo{border-radius:10px;}
+
+  .founder-ed-seal{width:76px;height:76px;right:10px;bottom:10px;}
+  .seal-text-top{font-size:9.5px;letter-spacing:1.6px;}
+  .seal-mark{font-size:22px;}
+
+  .founder-ed-copy h2{font-size:25px;line-height:1.28;}
+  .founder-ed-rule{margin:16px 0;}
+  .founder-ed-quote{font-size:17px;line-height:1.55;margin-bottom:20px;}
+
+  .dropcap{font-size:40px;padding-right:6px;}
+  .founder-ed-body{font-size:14px;margin-bottom:20px;}
+
+  .founder-ed-signature{font-size:30px;}
+  .founder-ed-sign{margin-bottom:20px;}
+}
+
+@media(max-width:400px){
+  .founder-ed-media{max-width:260px;}
+  .founder-ed-copy h2{font-size:22px;}
+  .founder-ed-quote{font-size:16px;}
+}
