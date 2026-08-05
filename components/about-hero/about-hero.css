@@ -1,6 +1,35 @@
-/* ABOUT PAGE HERO component */
-.about-hero{position:relative;height:420px;overflow:hidden;}
-.about-hero img{width:100%;height:100%;object-fit:cover;}
-.about-hero-overlay{position:absolute;inset:0;background:rgba(var(--forest-rgb), 0.45);display:flex;align-items:center;justify-content:center;text-align:center;}
-.about-hero-overlay h1{color:#fff;font-size:48px;}
-.about-hero-overlay p{color:var(--gold-light);margin-top:14px;font-size:14.5px;}
+/* PAGE HEADER / BREADCRUMB component (About page — same component as
+   Shop / Contact / Ingredients, duplicated per-page per this repo's own
+   convention. Do not add media, seals, or new classes here — the quiet
+   header stays quiet so the founder-real "Certified, not just claimed"
+   section right after it is the first loud moment on the page. */
+.page-header{background:var(--surface);border-bottom:1px solid var(--border);padding:44px 0 40px;text-align:center;}
+.breadcrumb{font-size:11.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--sage);font-weight:700;margin-bottom:12px;}
+.breadcrumb a{color:var(--sage);transition:color .2s;}
+.breadcrumb a:hover{color:var(--forest);}
+.page-header h1{font-size:42px;}
+.page-header p{color:var(--muted);font-size:14.5px;max-width:480px;margin:14px auto 0;}
+
+.page-header .header-provenance{
+  margin-top:20px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--sage);
+  max-width:none;
+}
+.page-header .header-provenance span{
+  color:var(--gold);
+  margin:0 8px;
+  font-weight:400;
+}
+
+@media(max-width:640px){
+  .page-header h1{font-size:32px;}
+  .page-header .header-provenance{
+    font-size:10px;
+    letter-spacing:.08em;
+  }
+  .page-header .header-provenance span{margin:0 5px;}
+}
