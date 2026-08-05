@@ -1,9 +1,66 @@
-/* FOUNDER component (used on Home + About) */
 .founder-wrap{display:grid;grid-template-columns:0.85fr 1fr;gap:80px;align-items:center;}
-.founder-portrait{border-radius:20px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 30px 60px rgba(var(--forest-rgb), 0.14);background:linear-gradient(160deg,var(--gold-light),var(--gold));}
-.founder-portrait img{width:100%;height:100%;object-fit:cover;}
-.founder-quote{font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1.5;color:var(--forest);font-style:italic;margin:20px 0 22px;border-left:3px solid var(--gold);padding-left:22px;}
-.founder-body{font-size:14.5px;color:var(--muted);line-height:1.8;max-width:440px;margin-bottom:20px;}
-.signature{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold);font-style:italic;}
+
+/* No-photo visual panel — a deliberate editorial block, not a
+   placeholder waiting to be filled. Swap for .founder-portrait
+   (real <img>) once a photo exists; nothing else needs to change. */
+.founder-visual{
+  position:relative;
+  border-radius:20px;
+  aspect-ratio:3/4;
+  background:linear-gradient(165deg, var(--forest) 0%, #2a4438 100%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:22px;
+  box-shadow:0 30px 60px rgba(var(--forest-rgb), 0.18);
+}
+.founder-monogram{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-weight:500;
+  font-size:96px;
+  color:var(--gold-light);
+  line-height:1;
+}
+.founder-visual-rule{width:36px;height:1px;background:rgba(255,255,255,0.25);}
+.founder-visual-label{
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.55);
+  font-weight:700;
+}
+
+.founder-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px;
+  line-height:1.5;
+  color:var(--forest);
+  font-style:italic;
+  margin:20px 0 22px;
+  border-left:3px solid var(--gold);
+  padding-left:22px;
+}
+.founder-wrap h2{font-size:32px;margin-top:10px;margin-bottom:22px;max-width:420px;}
+.founder-body{font-size:14.5px;color:var(--muted);line-height:1.8;max-width:440px;margin-bottom:28px;}
+
+.founder-sign-row{
+  display:flex;align-items:center;gap:16px;
+  padding-top:22px;border-top:1px solid var(--border);
+  max-width:440px;
+}
+.founder-sign-mark{
+  flex:0 0 auto;width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:#fff;
+  background:linear-gradient(160deg,var(--gold-light),var(--gold));
+}
+.founder-signature{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--forest);margin:0;}
+.founder-role{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--sage);font-weight:700;margin-top:2px;}
+
+.founder-cta{margin-top:24px;}
+.link-arrow{display:inline-block;font-size:13px;font-weight:600;color:var(--forest);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px;transition:color .2s ease;}
+.link-arrow:hover{color:var(--gold);}
 
 @media(max-width:1024px){ .founder-wrap{grid-template-columns:1fr;gap:40px;} }
