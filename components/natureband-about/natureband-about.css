@@ -5,3 +5,21 @@
 .nature-band-content{position:absolute;inset:0;display:flex;align-items:center;}
 .nature-band-content h2{color:#fff;font-size:42px;margin:12px 0 18px;max-width:460px;line-height:1.2;}
 .nature-band-content p{color:var(--gold-light);max-width:380px;font-size:14px;margin-bottom:28px;line-height:1.75;}
+
+@media(max-width:1024px){
+  .nature-band{height:520px;}
+  .nature-band-overlay{background:linear-gradient(180deg,rgba(var(--forest-rgb), 0.25) 0%,rgba(var(--forest-rgb), 0.75) 70%);}
+  .nature-band-content{align-items:flex-end;padding-bottom:40px;}
+  .nature-band-content h2{font-size:32px;max-width:100%;}
+  .nature-band-content p{max-width:100%;font-size:13.5px;}
+}
+@media(max-width:640px){
+  .nature-band{height:460px;}
+  .nature-band-content{padding-bottom:32px;}
+  .nature-band-content h2{font-size:26px;margin:10px 0 14px;}
+}
+@media(max-width:400px){
+  .nature-band{height:420px;}
+  .nature-band-content h2{font-size:23px;}
+  .nature-band-content p{font-size:12.5px;margin-bottom:20px;}
+}
