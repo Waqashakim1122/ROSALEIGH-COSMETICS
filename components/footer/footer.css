@@ -1,17 +1,83 @@
-/* FOOTER component */
+/* ============ FOOTER ============ */
 footer{padding:70px 0 30px;background:var(--bg);}
-.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:30px;padding-bottom:50px;border-bottom:1px solid var(--border);}
-.foot-brand .fmark{font-family:'Cormorant Garamond',serif;font-size:24px;letter-spacing:0.12em;color:var(--forest);}
-.foot-brand p{font-size:13px;color:var(--muted);margin-top:12px;max-width:220px;line-height:1.7;}
+
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:30px;padding-bottom:44px;border-bottom:1px solid var(--border);}
+
+/* Brand mark */
+.foot-brand .fmark{display:inline-block;font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:0.04em;color:var(--forest);line-height:1;text-decoration:none;}
+.foot-brand .fmark span{display:block;font-family:'Manrope',sans-serif;font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-top:6px;font-weight:600;}
+.foot-brand p{font-size:13px;color:var(--muted);margin-top:16px;max-width:230px;line-height:1.7;}
+
+/* Nav columns */
 .foot-grid h5{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--forest);margin-bottom:18px;font-weight:700;}
 .foot-grid ul{list-style:none;}
 .foot-grid li{margin-bottom:12px;}
-.foot-grid a{font-size:13px;color:var(--muted);transition:color .2s;}
+.foot-grid a{font-size:13px;color:var(--muted);transition:color .2s;text-decoration:none;}
 .foot-grid a:hover{color:var(--forest);}
-.foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:12px;color:var(--muted);flex-wrap:wrap;gap:14px;}
-.socials{display:flex;gap:10px;}
-.socials a{width:32px;height:32px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all .2s;color:var(--muted);}
-.socials a:hover{border-color:var(--forest);color:var(--forest);}
 
-@media(max-width:1024px){ .foot-grid{grid-template-columns:1fr 1fr;} }
-@media(max-width:640px){ .foot-grid{grid-template-columns:1fr;} }
+/* --- Payments: own row, plain icons, no card boxes --- */
+.foot-payments-row{
+  display:flex;flex-direction:column;align-items:center;gap:16px;
+  padding:32px 0;border-bottom:1px solid var(--border);
+}
+.foot-payments-label{
+  font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--muted);font-weight:700;
+}
+.foot-payments{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:22px;}
+
+.pay-badge{
+  display:flex;align-items:center;justify-content:center;
+}
+.pay-badge img{
+  height:28px;
+  width:auto;
+  display:block;
+  opacity:0.85;
+  transition:opacity .15s ease;
+}
+.pay-badge:hover img{opacity:1;}
+
+/* --- Bottom bar: unified, three-column layout --- */
+.foot-bottom{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:20px;
+  padding-top:24px;
+  font-size:12px;
+  color:var(--muted);
+}
+.foot-copy{white-space:nowrap;}
+
+.legal-links{display:flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;}
+.legal-links .lock-icon{color:var(--gold);flex-shrink:0;}
+.legal-links a{color:var(--muted);transition:color .2s;text-decoration:none;}
+.legal-links a:hover{color:var(--forest);}
+.legal-links span{opacity:0.5;}
+
+.socials{display:flex;justify-content:flex-end;gap:10px;}
+.socials a{width:32px;height:32px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .2s;color:var(--muted);}
+.socials a:hover{border-color:var(--forest);color:var(--forest);background:rgba(0,0,0,0.02);}
+
+/* --- Responsive --- */
+@media(max-width:1024px){
+  .foot-grid{grid-template-columns:1fr 1fr 1fr;row-gap:36px;}
+  .foot-brand{grid-column:1 / -1;}
+  .foot-brand p{max-width:360px;}
+}
+@media(max-width:768px){
+  .foot-bottom{grid-template-columns:1fr;justify-items:center;text-align:center;gap:14px;}
+  .socials{justify-content:center;}
+}
+@media(max-width:640px){
+  footer{padding:50px 0 24px;}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:32px 20px;padding-bottom:36px;}
+  .foot-brand{grid-column:1 / -1;text-align:left;}
+  .foot-payments-row{padding:24px 0;}
+  .pay-badge img{height:22px;}
+  .foot-payments{gap:16px;}
+}
+@media(max-width:400px){
+  .foot-grid{grid-template-columns:1fr;}
+}
